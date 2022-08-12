@@ -1,0 +1,79 @@
+body{
+    font-size: 100%;
+    max-width: 100%;
+}
+
+/*
+* Header
+*/
+header{
+    position: relative;
+}
+.main-header{
+    min-height: 5.5rem;
+    display: flex;
+    background-color: #ffffff;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.right-header-items{
+    display: flex;
+    justify-content: space-between;
+}
+.right-header-items > .header-contactUs , .right-header-items > .header-socialMedia{
+    display: flex;
+}
+.header-socialMedia > span{
+    margin-top:.8rem ;
+    margin-left: .5rem;
+    padding: 5px;
+
+}
+.header-contactUs{
+    margin-top:.7rem ;
+    margin-left: .5rem;
+    padding: 5px;
+    align-items: center;
+    justify-content: space-around;
+}
+a{
+    color: #abb8c3;
+    text-decoration: none;
+}
+.header-contactUs > div{
+    margin: 3px .8rem;
+}
+.GW-logo{
+    margin: 5px 10px;
+    padding: 5px;
+}
+/*
+*  Sub-Header
+*/
+.sub-header{
+    display: flex;
+    position: absolute;
+    justify-content: flex-start;
+    background-color: #79a342;
+    height: 72px;
+    min-width:65%;
+    z-index: 1;
+    top: 55px;
+    align-items: center;
+    padding-left: 10px;
+    border-radius: 0 100px 0 0;
+}
+.SH-links{
+    display: flex;
+    margin-left: 1.5rem;
+}
+.SH-links > a{
+    color: #fff;
+    margin: .7rem;
+}
+.sub-header > span{
+    margin-left: .5rem;
+}
+/*
+*  Main Video
+*/
