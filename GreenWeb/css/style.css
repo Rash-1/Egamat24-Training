@@ -1,3 +1,9 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    box-sizing: border-box;
+}
 body{
     font-size: 100%;
     max-width: 100%;
@@ -77,3 +83,47 @@ a{
 /*
 *  Main Video
 */
+.sub-main{
+    position: relative;
+    height: 700px;
+    width: 100%;
+}
+video{
+    position: absolute;
+    opacity: 75%;
+    top: 0;
+    bottom: 0;
+
+}
+@media(min-width:1024px ) {
+    video{
+        width: 100%;
+        height: auto;
+    }
+}
+@media(max-width:1024px ) {
+    video{
+        width: auto;
+        height: 100%;
+    }
+}
+.video-title{
+    position: absolute;
+    z-index: 1;
+    color: white;
+    top: 20%;
+    left: 30%;
+    font-size: 75px;
+    font-weight: 600;
+    text-align: center;
+}
+@media (max-width: 1024px) {
+    .video-title{
+        left:9%;
+        font-size: 65px;
+    }
+}
+.video-title > p{
+    font-size: 1.3rem;
+    font-weight: 300;
+}
