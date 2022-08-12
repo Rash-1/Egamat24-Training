@@ -83,6 +83,10 @@ a{
 /*
 *  Main Video
 */
+main{
+    width: 100%;
+    position: relative;
+}
 .sub-main{
     position: relative;
     height: 700px;
@@ -126,4 +130,54 @@ video{
 .video-title > p{
     font-size: 1.3rem;
     font-weight: 300;
+}
+.under-video{
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border: 1px solid #394b5b;
+    border-radius: 35px;
+    z-index: 1;
+    position: absolute;
+    top: 40rem;
+    left: 4rem;
+    right: 4rem;
+    margin: 0 2rem;
+    padding: 0.8rem;
+    width: 85%;
+}
+
+.under-video-logos{
+    display: inline-grid;
+    grid-template-columns: repeat(7,1fr);
+    grid-template-rows:100px;
+    column-gap: 5px;
+    overflow:hidden ;
+}
+.under-video-logo  img{
+    width: 12rem;
+}
+.under-video-info{
+    margin-top: 2rem;
+    text-align: center;
+    color: #abb8c3;
+}
+.under-video-info >p{
+    margin-bottom: 1rem;
+}
+.under-video-button{
+    text-align: center;
+    border-radius: 25px;
+    color: #ffffff;
+    margin-top: 1rem;
+}
+.under-video-button > span {
+    color: #79a342;
+    padding: 1rem;
+}
+.under-video-button >span > a{
+    padding: .2rem;
+    border-radius: 15px;
+    color: white;
+    background-color: #79a342;
 }
