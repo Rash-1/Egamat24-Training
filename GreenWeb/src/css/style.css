@@ -1,9 +1,15 @@
+@font-face {
+    font-family: iranyekan;
+    src: url("../Font/Qs_Iranyekan light.ttf");
+}
 *{
     margin: 0;
     padding: 0;
     font-size: 16px;
     box-sizing: border-box;
+    font-family: iranyekan;
 }
+
 body{
     font-size: 100%;
     max-width: 100%;
@@ -116,20 +122,20 @@ video{
     z-index: 1;
     color: white;
     top: 20%;
-    left: 30%;
+    left: 20%;
     font-size: 75px;
-    font-weight: 600;
+    font-weight: 800;
     text-align: center;
 }
 @media (max-width: 1024px) {
     .video-title{
-        left:9%;
+        left:0;
         font-size: 65px;
     }
 }
 .video-title > p{
     font-size: 1.3rem;
-    font-weight: 300;
+    font-weight: 500;
 }
 .under-video{
     display: flex;
@@ -152,7 +158,11 @@ video{
     grid-template-columns: repeat(7,1fr);
     grid-template-rows:100px;
     column-gap: 5px;
-    overflow:hidden ;
+    overflow-x:scroll ;
+    overflow-y: hidden;
+}
+.under-video-logos::-webkit-scrollbar{
+    display: none;
 }
 .under-video-logo  img{
     width: 12rem;
@@ -170,6 +180,8 @@ video{
     border-radius: 25px;
     color: #ffffff;
     margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
 }
 .under-video-button > span {
     color: #79a342;
@@ -181,3 +193,81 @@ video{
     color: white;
     background-color: #79a342;
 }
+
+/*
+* After main video section
+*/
+.after-video-section{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 15rem;
+    overflow: hidden;
+    margin-bottom: 5rem;
+}
+@media  (max-width: 1024px){
+    .after-video-section{
+        flex-direction:row ;
+    }
+}
+
+ .items{
+    width: 33%;
+    text-align: center;
+    color: #79a342;
+}
+ .items > div{
+     margin: 1rem;
+ }
+ .fa-description {
+     color: #aaaaaa;
+     margin-bottom: 1rem;
+     margin-top: 2rem;
+ }
+ .en-info {
+     color: #aaaaaa;
+     font-size: .7rem;
+     font-weight: 400;
+ }
+ .fa-info{
+     font-size: 1.5rem;
+     font-weight: 700;
+ }
+ .fa-info::before{
+     contain: none;
+     display: none;
+ }
+ .after-video-section:first-child:last-child{
+     text-align: center;
+     padding: 1rem;
+
+ }
+.after-video-section > div:nth-child(1) > div:nth-child(5) > a{
+    color: #79a342;
+    padding: .3rem;
+    border: 1px solid #79a342;
+    border-radius: 20px;
+}
+.conversation-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.conv-img{
+ width: 100%;
+}
+.on-image-cover{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-between;
+    z-index: 1;
+    position: absolute;
+    top: auto;
+
+}
+
+
+
