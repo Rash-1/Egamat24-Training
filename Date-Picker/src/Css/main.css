@@ -72,7 +72,7 @@ body{
     display: flex;
     flex-direction: row;
     width: 100%;
-    justify-content: space-around;
+    justify-content: space-between;
     user-select: none;
 }
 .month-and-year .month{
@@ -88,6 +88,12 @@ body{
 }
 .arrow a p{
     font-weight: 900;
+}
+.next-month{
+    margin-right: 1rem
+}
+.previous-month{
+    margin-left: 1rem
 }
 .days{
     width: 100%;
