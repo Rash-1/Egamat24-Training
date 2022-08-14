@@ -2,3 +2,114 @@
     font-family: "myFont";
     src: url("../Fonts/RubikDistressed-Regular.ttf");
 }
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-size: 16px;
+    font-family: 'myFont';
+    background-color: #838996;
+    position: relative;
+}
+/*
+*  Date Picker
+*/
+.date-picker{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 30rem;
+    border: 1px solid lightgray;
+    border-radius: 25px;
+    width: 68%;
+    margin: 0 auto;
+    max-width: 35rem;
+}
+/*
+*  Title
+*/
+.title{
+    text-align: center;
+    margin: 1.5rem 0 2rem 0;
+    color: #43BFC7;
+    font-size: 2rem;
+    user-select: none;
+}
+.title h1{
+    font-weight: 300;
+}
+
+/*
+*  Selected Date
+*/
+.selected-date{
+    margin: 1rem 0 ;
+    border-bottom: 1px solid whitesmoke;
+    cursor: pointer;
+    user-select: none;
+
+}
+.selected-date h1{
+    font-weight: 200;
+    font-size: 2.7rem;
+}
+
+/*
+*  Calender
+*/
+.calender{
+    width: 100%;
+    height: 100%;
+    padding: .2rem;
+}
+
+.month-and-year-section{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    user-select: none;
+}
+.month-and-year .month{
+   margin-right: .3rem;
+}
+.month-and-year .month{
+    margin-right: .3rem;
+}
+.arrow a{
+ cursor: pointer;
+}
+.arrow a p{
+    font-weight: 900;
+}
+.days{
+    width: 100%;
+    height: 90%;
+    background-color: lightgray;
+    border-radius: 20px;
+    margin: 1rem auto 0 auto;
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    grid-template-rows: repeat(4,1fr);
+    gap: 5px;
+    padding: 2.5rem;
+}
+.day{
+    background-color: #52595D;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+}
+.selected-day{
+    background-color: #98AFC7 ;
+
+}
+.day:hover{
+    background-color: #728FCE;
+}
+
+
