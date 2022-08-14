@@ -77,9 +77,11 @@ body{
 }
 .month-and-year .month{
    margin-right: .3rem;
+    font-size: 1rem;
 }
-.month-and-year .month{
+.month-and-year .year{
     margin-right: .3rem;
+    font-size: 1.1rem;
 }
 .arrow a{
  cursor: pointer;
@@ -117,6 +119,9 @@ body{
 }
 .hidden{
     display: none;
+}
+.arrow a p:hover{
+    color: cornsilk;
 }
 
 
