@@ -115,6 +115,9 @@ body{
 .day:hover{
     background-color: #005780;
 }
+.hidden{
+    display: none;
+}
 
 
 
