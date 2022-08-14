@@ -21,11 +21,12 @@ body{
     flex-direction: column;
     align-items: center;
     height: 30rem;
-    border: 1px solid lightgray;
+    /*border: 1px solid lightgray;*/
     border-radius: 25px;
     width: 68%;
     margin: 0 auto;
     max-width: 35rem;
+    box-shadow: 0 0 10px 10px #98AFC7;
 }
 /*
 *  Title
@@ -51,6 +52,7 @@ body{
     user-select: none;
 
 }
+
 .selected-date h1{
     font-weight: 200;
     font-size: 2.7rem;
@@ -92,7 +94,7 @@ body{
     margin: 1rem auto 0 auto;
     display: grid;
     grid-template-columns: repeat(7,1fr);
-    grid-template-rows: repeat(4,1fr);
+    grid-template-rows: repeat(5,1fr);
     gap: 5px;
     padding: 2.5rem;
 }
