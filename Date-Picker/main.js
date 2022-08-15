@@ -92,20 +92,27 @@ const monthsInfo = {
 };
 
 function CheckKabise(year){
-    switch (year % 33) {
-        case 30:
-        case 26:
-        case 22:
-        case 17:
-        case 13:
-        case 9:
-        case 5:
-        case 1:
-            return true
-        break;
-        default:
-            return false
+    if (year == 1404){
+        return true;
+    }else if(year == 1403){
+        return false
+    }else{
+        switch (year % 33) {
+            case 30:
+            case 26:
+            case 22:
+            case 17:
+            case 13:
+            case 9:
+            case 5:
+            case 1:
+                return true
+                break;
+            default:
+                return false
+        }
     }
+
 
 }
 function monthDaysNum(month,year){
