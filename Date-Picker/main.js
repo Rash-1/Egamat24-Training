@@ -91,6 +91,33 @@ const monthsInfo = {
     }
 };
 
+function CheckKabise(year){
+    switch (year % 33) {
+        case 30:
+        case 26:
+        case 22:
+        case 17:
+        case 13:
+        case 9:
+        case 5:
+        case 1:
+            return true
+        break;
+        default:
+            return false
+    }
+
+}
+function monthDaysNum(month,year){
+    if (monthsInfo[month].name === 'Esfand' && CheckKabise(year)){
+        monthsInfo[month].days = 30;
+        return monthsInfo[month].days;
+    }
+
+    return  monthsInfo[month].days;
+}
+
+
 /*
 * User Selected Date
 */
@@ -109,7 +136,7 @@ document.querySelector('.date').innerText = formatted_Sl_Date;
 */
 Cl_year_section.innerText = currentJA_Year;
 Cl_month_section.innerText = monthsInfo[currentJA_Month].name;
-let monthDaysCount = monthsInfo[Cl_month_value].days;
+let monthDaysCount = monthDaysNum(Cl_month_value,Cl_year_value);
 function addDays(monthDaysCount){
     for (let i = 0; i <monthDaysCount ; i++) {
         let day = document.createElement('div');
@@ -156,7 +183,7 @@ function nextMonth(){
     }
     Cl_month_section.textContent = monthsInfo[Cl_month_value].name;
     Cl_year_section.textContent = Cl_year_value
-    monthDaysCount = monthsInfo[Cl_month_value].days;
+    monthDaysCount = monthDaysNum(Cl_month_value,Cl_year_value);
     removeDays();
     addDays(monthDaysCount);
 }
@@ -168,7 +195,8 @@ function previousMonth(){
     }
     Cl_month_section.textContent = monthsInfo[Cl_month_value].name;
     Cl_year_section.textContent = Cl_year_value
-    monthDaysCount = monthsInfo[Cl_month_value].days;
+    // monthDaysCount = monthsInfo[Cl_month_value].days;
+    monthDaysCount = monthDaysNum(Cl_month_value,Cl_year_value);
     removeDays();
     addDays(monthDaysCount);
 }
