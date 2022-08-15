@@ -1,0 +1,82 @@
+//Fonts
+@font-face {
+  font-family: "bebas";
+  src: url("./src/Fonts/BebasNeue-Regular.ttf");
+}
+//variables
+$mainFont : "bebas";
+$font-size : 16px;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body{
+  font-size: $font-size;
+  margin: 1rem;
+  position: relative;
+  .form{
+    font-family: $mainFont;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    right: 50%;
+    .formElement{
+      display: flex;
+      flex-direction:column;
+      background-color: #ccc;
+      padding: .5rem;
+      border-radius: 15px;
+      justify-content: center;
+      align-items: center;
+      input{
+        margin: .2rem auto;
+        padding: .2rem;
+        border-radius: 10px;
+        max-width: 70px;
+      }
+      .exitSection{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-content: center;
+        position: relative;
+        span{
+        padding: .2rem;
+        display: flex;
+        justify-content: center;
+        max-width: 100%;
+      }
+      }
+      .entrySection{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-content: center;
+        position: relative;
+        span{
+        padding: .2rem;
+        display: flex;
+        justify-content: center;
+        max-width: 100%;
+      }
+      }
+      .submitButton{
+        padding: .2rem;
+        border: 1px solid gray;
+        border-radius: 10px;
+        background-color: transparent;
+        text-align: center;
+        width: 50%;
+        user-focus: none;
+        user-select: none;
+      }
+      .submitButton:hover{
+        background-color: cornflowerblue;
+        color: #fff;
+      }
+    }
+  }
+}
