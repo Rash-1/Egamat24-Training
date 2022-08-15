@@ -1,5 +1,11 @@
 @font-face {
-    font-family: "myFont";
+    font-family: "Bebas";
+    src: url("../Fonts/BebasNeue-Regular.ttf");
+}@font-face {
+    font-family: "Aboreto";
+    src: url("../Fonts/Aboreto-Regular.ttf");
+}@font-face {
+    font-family: "Rubik";
     src: url("../Fonts/RubikDistressed-Regular.ttf");
 }
 *{
@@ -9,7 +15,7 @@
 }
 body{
     font-size: 16px;
-    font-family: 'myFont';
+    font-family: 'Rubik';
     background-color: #838996;
     position: relative;
 }
@@ -40,7 +46,7 @@ body{
     font-style: italic;
 }
 .title h1{
-    font-weight: 300;
+    font-weight: 1000;
 }
 
 /*
@@ -74,14 +80,15 @@ body{
     width: 100%;
     justify-content: space-between;
     user-select: none;
+
 }
 .month-and-year .month{
    margin-right: .3rem;
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 .month-and-year .year{
     margin-right: .3rem;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
 }
 .arrow a{
  cursor: pointer;
