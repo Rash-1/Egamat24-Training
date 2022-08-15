@@ -3,12 +3,12 @@
 */
 
 let selectedDate = document.querySelector(".selected-date");
-let Cl_month_section = document.querySelector('.month');
-let Cl_year_section = document.querySelector('.year');
-let Cl_days_section = document.querySelector('.days');
-let Cl_days = Cl_days_section.children;
-let nArrow = document.querySelector('.next-month');
-let pArrow = document.querySelector('.previous-month');
+let calendarMonthSection = document.querySelector('.month');
+let calendarYearSection = document.querySelector('.year');
+let calendarDaysSection = document.querySelector('.days');
+let calendarDays = calendarDaysSection.children;
+let nextArrow = document.querySelector('.next-month');
+let previousArrow = document.querySelector('.previous-month');
 
 /*
 * Calendar PopUp
@@ -31,11 +31,11 @@ let currentDay = _Date.getDate();
 * Current Date in Jalali
 */
 
-let currentDate_ja = gregorian_to_jalali(currentYear,currentMonth +1, currentDay);
+let currentJalaliDate = gregorian_to_jalali(currentYear,currentMonth +1, currentDay);
 
-let currentJA_Year = currentDate_ja[0]
-let currentJA_Month = currentDate_ja[1]
-let currentJA_Day = currentDate_ja[2]
+let currentJalaliYear = currentJalaliDate[0]
+let currentJalaliMonth = currentJalaliDate[1]
+let currentJalaliDay = currentJalaliDate[2]
 /*
 * Months And Their Days Count
 */
@@ -91,7 +91,7 @@ const monthsInfo = {
     }
 };
 
-function CheckKabise(year){
+function checkKabiseh(year){
     if (year == 1404){
         return true;
     }else if(year == 1403){
@@ -116,7 +116,7 @@ function CheckKabise(year){
 
 }
 function monthDaysNum(month,year){
-    if (monthsInfo[month].name === 'Esfand' && CheckKabise(year)){
+    if (monthsInfo[month].name === 'Esfand' && checkKabiseh(year)){
         monthsInfo[month].days = 30;
         return monthsInfo[month].days;
     }
@@ -129,49 +129,45 @@ function monthDaysNum(month,year){
 * User Selected Date
 */
 
-let selected_year_value = currentJA_Year;
-let selected_month_value = currentJA_Month;
-let selected_day_value = currentJA_Day;
+let selectedYearValue = currentJalaliYear;
+let selectedMonthValue = currentJalaliMonth;
+let selectedDayValue = currentJalaliDay;
 
-let Cl_month_value = currentJA_Month;
-let Cl_year_value = currentJA_Year;
+let calendarMonthValue = currentJalaliMonth;
+let calendarYearValue = currentJalaliYear;
 
-let formatted_Sl_Date = selected_year_value  + ' / ' + selected_month_value + ' / ' + selected_day_value;
-document.querySelector('.date').innerText = formatted_Sl_Date;
+let formattedSelectedDate = selectedYearValue  + ' / ' + selectedMonthValue + ' / ' + selectedDayValue;
+document.querySelector('.date').innerText = formattedSelectedDate;
 /*
 * Calendar Month & Year & Days
 */
-Cl_year_section.innerText = currentJA_Year;
-Cl_month_section.innerText = monthsInfo[currentJA_Month].name;
-let monthDaysCount = monthDaysNum(Cl_month_value,Cl_year_value);
+calendarYearSection.innerText = currentJalaliYear;
+calendarMonthSection.innerText = monthsInfo[currentJalaliMonth].name;
+let monthDaysCount = monthDaysNum(calendarMonthValue,calendarYearValue);
 function addDays(monthDaysCount){
     for (let i = 0; i <monthDaysCount ; i++) {
         let day = document.createElement('div');
         day.classList.add('day');
         day.innerText = i + 1;
-        if (day.innerText == selected_day_value && Cl_month_value == selected_month_value && Cl_year_value == selected_year_value ){
+        if (day.innerText == selectedDayValue && calendarMonthValue == selectedMonthValue && calendarYearValue == selectedYearValue ){
             day.classList.add('selected-day');
         }
         day.addEventListener('dblclick',(e) =>{
             removeDays();
-            selected_day_value = day.innerText;
-            selected_month_value = Cl_month_value
-            selected_year_value = Cl_year_value
+            selectedDayValue = day.innerText;
+            selectedMonthValue = calendarMonthValue
+            selectedYearValue = calendarYearValue
 
-            formatted_Sl_Date = selected_year_value  + ' / ' + selected_month_value + ' / ' + selected_day_value;
-            document.querySelector('.date').innerText = formatted_Sl_Date;
-            monthDaysCount = monthsInfo[selected_month_value].days;
+            formattedSelectedDate = selectedYearValue  + ' / ' + selectedMonthValue + ' / ' + selectedDayValue;
+            document.querySelector('.date').innerText = formattedSelectedDate;
+            monthDaysCount = monthsInfo[selectedMonthValue].days;
             addDays(monthDaysCount);
         })
-        Cl_days_section.appendChild(day);
+        calendarDaysSection.appendChild(day);
     }
 }
 function removeDays(){
-    // let days = document.querySelectorAll('.day')
-    // days.forEach(day =>{
-    //     day.remove();
-    // })
-    Cl_days_section.innerHTML = '';
+    calendarDaysSection.innerHTML = '';
 }
 addDays(monthDaysCount);
 
@@ -179,51 +175,33 @@ addDays(monthDaysCount);
 * Calendar Arrows Events
 */
 
-nArrow.addEventListener('click',nextMonth);
-pArrow.addEventListener('click',previousMonth);
+nextArrow.addEventListener('click',nextMonth);
+previousArrow.addEventListener('click',previousMonth);
 
 function nextMonth(){
-    Cl_month_value +=1;
-    if (Cl_month_value > 12){
-        Cl_year_value += 1;
-        Cl_month_value = 1;
+    calendarMonthValue +=1;
+    if (calendarMonthValue > 12){
+        calendarYearValue += 1;
+        calendarMonthValue  = 1;
     }
-    Cl_month_section.textContent = monthsInfo[Cl_month_value].name;
-    Cl_year_section.textContent = Cl_year_value
-    monthDaysCount = monthDaysNum(Cl_month_value,Cl_year_value);
+    calendarMonthSection.textContent = monthsInfo[calendarMonthValue].name;
+    calendarYearSection.textContent = calendarYearValue
+    monthDaysCount = monthDaysNum(calendarMonthValue,calendarYearValue);
     removeDays();
     addDays(monthDaysCount);
 }
 function previousMonth(){
-    Cl_month_value -=1;
-    if (Cl_month_value < 1){
-        Cl_year_value -= 1;
-        Cl_month_value = 12;
+    calendarMonthValue -=1;
+    if (calendarMonthValue  < 1){
+        calendarYearValue -= 1;
+        calendarMonthValue  = 12;
     }
-    Cl_month_section.textContent = monthsInfo[Cl_month_value].name;
-    Cl_year_section.textContent = Cl_year_value
+    calendarMonthSection.textContent = monthsInfo[calendarMonthValue ].name;
+    calendarYearSection.textContent = calendarYearValue
     // monthDaysCount = monthsInfo[Cl_month_value].days;
-    monthDaysCount = monthDaysNum(Cl_month_value,Cl_year_value);
+    monthDaysCount = monthDaysNum(calendarMonthValue ,calendarYearValue);
     removeDays();
     addDays(monthDaysCount);
 }
 
-/*
-* Calendar Days Event
-*/
-
-// Array.from(Cl_days).forEach(day =>{
-//     day.addEventListener('dblclick',(e) =>{
-//        removeDays();
-//        selected_day_value = day.innerText;
-//        selected_month_value = Cl_month_value
-//        selected_year_value = Cl_year_value
-//
-//        formatted_Sl_Date = selected_year_value  + ' / ' + selected_month_value + ' / ' + selected_day_value;
-//        document.querySelector('.date').innerText = formatted_Sl_Date;
-//        monthDaysCount = monthsInfo[selected_month_value].days;
-//        addDays(monthDaysCount);
-//
-//     })
-// })
 
