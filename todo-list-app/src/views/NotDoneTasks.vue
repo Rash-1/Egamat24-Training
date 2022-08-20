@@ -75,9 +75,7 @@ export default {
   },
   mounted() {
     if (localStorage.getItem('tasks') != null && localStorage.getItem('tasks') !== '[]'){
-      if (localStorage.getItem('tasks') != null && localStorage.getItem('tasks') !== '[]'){
         this.tasks = JSON.parse(localStorage.getItem('tasks'));
-      }
     }else {
       this.massage = 'You Have No Task To Do'
     }

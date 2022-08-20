@@ -121,25 +121,7 @@ export default {
         this.massage = ''
       },700);
     },
-    timeSeparator(time){
-      let myTimeArray = time.split('T')
-      let inputTime = myTimeArray[1];
-      let inputDate = myTimeArray[0]
-      let hour = inputTime.split(':')[0]
-      let minute = inputTime.split(':')[1]
-      let year = inputDate.split('-')[0]
-      let month = inputDate.split('-')[1]
-      let day = inputDate.split('-')[2]
-      return[
-          year,
-          month,
-          day,
-          hour,
-          minute,
-      ]
     },
-    },
-
 }
 </script>
 
