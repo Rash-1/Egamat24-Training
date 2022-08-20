@@ -40,11 +40,11 @@ export default {
           description:'',
           deadLine:'',
           date:{
-            year:0,
-            month:0,
-            day:0,
-            hours:0,
-            minutes:0,
+            year:null,
+            month:null,
+            day:null,
+            hours:null,
+            minutes:null,
           },
           status:false,
           slug:'',
@@ -54,42 +54,38 @@ export default {
   },
   methods:{
     createTask(){
-      if (this.$refs.date.value === ''){
-        let currentDate = new Date();
-        this.task.date.year = currentDate.getFullYear();
-        this.task.date.month = currentDate.getMonth();
-        this.task.date.day = currentDate.getDate();
-        this.task.date.hours = currentDate.getHours();
-        this.task.date.minutes = currentDate.getMinutes();
-      }else {
-        let time =this.timeSeparator(this.$refs.date.value)
-        this.task.date.year = +time[0]
-        this.task.date.month = +time[1]
-        this.task.date.day = +time[2]
-        this.task.date.hours = +time[3]
-        this.task.date.minutes = +time[4]
-      }
       if (this.task.title !==''){
-        if (localStorage.getItem('tasks') !== null && localStorage.getItem('tasks') !== '[]' ){
-          if (this.uniqueChecker(this.task.title)) {
+        console.log(this.task.date.year)
+        if (this.$refs.date.value !== ''){
+          // let time =this.timeSeparator(this.$refs.date.value)
+          // this.task.date.year = time[0]
+          // this.task.date.month = time[1]
+          // this.task.date.day = time[2]
+          // this.task.date.hours = time[3]
+          // this.task.date.minutes = time[4]
+          if (localStorage.getItem('tasks') !== null && localStorage.getItem('tasks') !== '[]' ){
+            if (this.uniqueChecker(this.task.title)) {
+              this.task.slug = this.slugCreator(this.task.title)
+              let data = JSON.parse(localStorage.getItem('tasks'))
+              data.push(this.task);
+              data = JSON.stringify(data)
+              localStorage.setItem('tasks', data);
+              this.massage = 'Task Created SuccessFully'
+              this.clearForm();
+            }else {
+              this.massage = 'You Have tasks With Same Title'
+            }
+          }else {
+            let tasks =[];
             this.task.slug = this.slugCreator(this.task.title)
-            let data = JSON.parse(localStorage.getItem('tasks'))
-            data.push(this.task);
-            data = JSON.stringify(data)
-            localStorage.setItem('tasks', data);
+            tasks.push(this.task);
+            tasks = JSON.stringify(tasks);
+            localStorage.setItem('tasks',tasks);
             this.massage = 'Task Created SuccessFully'
             this.clearForm();
-          }else {
-            this.massage = 'You Have tasks With Same Title'
           }
-        }else {
-          let tasks =[];
-          this.task.slug = this.slugCreator(this.task.title)
-          tasks.push(this.task);
-          tasks = JSON.stringify(tasks);
-          localStorage.setItem('tasks',tasks);
-          this.massage = 'Task Created SuccessFully'
-          this.clearForm();
+        }else{
+          this.massage = 'Please Enter A Date';
         }
       }else {
         this.massage = 'Please Enter A Title';
@@ -103,7 +99,6 @@ export default {
           result = false
         }
       })
-      console.log(result)
       return result;
     },
     slugCreator(str){

@@ -24,7 +24,7 @@
           <td>{{ task.date.year }}-{{task.date.month}}-{{task.date.day}} T{{task.date.hours}}:{{task.date.minutes}}</td>
           <td>{{ task.deadLine }}</td>
           <td>
-            <router-link :to="/task-detail/${task.slug}">
+            <router-link :to="`/task-detail/${task.slug}`">
               Detail
             </router-link>
           </td>
@@ -88,7 +88,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .status{
   padding: 0;
 }
