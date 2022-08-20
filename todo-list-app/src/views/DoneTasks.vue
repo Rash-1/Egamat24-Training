@@ -21,7 +21,7 @@
           <tr v-if="task.status === true">
             <td>{{ task.title }}</td>
             <td>{{ task.description }}</td>
-            <td>{{ task.date.year }}-{{task.date.month}}-{{task.date.day}} T{{task.date.hours}}:{{task.date.minutes}}</td>
+            <td>{{task.date}}</td>
             <td>{{ task.deadLine }}</td>
             <td>
               <router-link :to="`/task-detail/${task.slug}`">
