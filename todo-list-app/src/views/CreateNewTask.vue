@@ -24,13 +24,14 @@
       </div>
       <div class="form-group">
         <label for="date">Date</label>
-        <input ref="date" type="datetime-local" class="form-control" id="date" placeholder="Enter Date">
+        <input v-model="task.date" ref="date" type="datetime-local" class="form-control" id="date" placeholder="Enter Date">
       </div>
       <p @click="createTask" class="btn btn-primary mt-3">Create Task</p>
     </form>
   </div>
 </template>
 <script>
+import moment from "moment";
 export default {
   name: "CreateNewTask",
   data(){
@@ -39,13 +40,7 @@ export default {
           title:'',
           description:'',
           deadLine:'',
-          date:{
-            year:null,
-            month:null,
-            day:null,
-            hours:null,
-            minutes:null,
-          },
+          date:'',
           status:false,
           slug:'',
         },
@@ -55,14 +50,9 @@ export default {
   methods:{
     createTask(){
       if (this.task.title !==''){
-        console.log(this.task.date.year)
-        if (this.$refs.date.value !== ''){
-          // let time =this.timeSeparator(this.$refs.date.value)
-          // this.task.date.year = time[0]
-          // this.task.date.month = time[1]
-          // this.task.date.day = time[2]
-          // this.task.date.hours = time[3]
-          // this.task.date.minutes = time[4]
+        if (this.$refs.date.value == '') {
+          this.task.date = moment().format('YYYY-MM-DDTHH:mm')
+        }
           if (localStorage.getItem('tasks') !== null && localStorage.getItem('tasks') !== '[]' ){
             if (this.uniqueChecker(this.task.title)) {
               this.task.slug = this.slugCreator(this.task.title)
@@ -84,9 +74,6 @@ export default {
             this.massage = 'Task Created SuccessFully'
             this.clearForm();
           }
-        }else{
-          this.massage = 'Please Enter A Date';
-        }
       }else {
         this.massage = 'Please Enter A Title';
       }
