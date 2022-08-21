@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-5 rounded-5">
+  <div class="container mt-5 rounded-5" :key="counter">
     <h1 class="mb-5">
       Let's Create New Task
     </h1>
@@ -36,7 +36,7 @@ export default {
   name: "CreateNewTask",
   data(){
     return{
-        task:{
+      task:{
           title:'',
           description:'',
           deadLine:'',
@@ -44,22 +44,23 @@ export default {
           status:false,
           slug:'',
         },
-        massage:'',
+      massage:'',
+      counter:0,
     }
   },
   methods:{
     createTask(){
       if (this.task.title !==''){
-        if (this.$refs.date.value == '') {
+        if (this.$refs.date.value === '') {
           this.task.date = moment().format('YYYY-MM-DDTHH:mm')
         }
-          if (localStorage.getItem('tasks') !== null && localStorage.getItem('tasks') !== '[]' ){
+          if (this.$store.state.tasks !== null && this.$store.state.tasks !== [] ){
             if (this.uniqueChecker(this.task.title)) {
               this.task.slug = this.slugCreator(this.task.title)
-              let data = JSON.parse(localStorage.getItem('tasks'))
-              data.push(this.task);
-              data = JSON.stringify(data)
-              localStorage.setItem('tasks', data);
+              let tasks = this.$store.state.tasks;
+              tasks.push(this.task);
+              tasks = JSON.stringify(tasks)
+              localStorage.setItem('tasks', tasks);
               this.massage = 'Task Created SuccessFully'
               this.clearForm();
             }else {
@@ -77,6 +78,8 @@ export default {
       }else {
         this.massage = 'Please Enter A Title';
       }
+      console.log('from Create')
+      this.counter +=1;
       },
     uniqueChecker(title){
       let tasks = JSON.parse(localStorage.getItem('tasks'))

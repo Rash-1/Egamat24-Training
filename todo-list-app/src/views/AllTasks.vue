@@ -24,7 +24,7 @@
           <td>{{task.date}}</td>
           <td>{{ task.deadLine }}</td>
           <td>
-            <router-link :to="`/task-detail/${task.slug}`">
+            <router-link :to=" `/task-detail/${task.slug}` ">
               Detail
             </router-link>
           </td>
@@ -50,7 +50,7 @@ export default {
   data(){
     return{
       counter:0,
-      tasks :JSON.parse(localStorage.getItem('tasks')),
+      tasks :this.$store.state.tasks,
       massage:'You Have No Tasks',
       checkLogo:require('../assets/images/check.png'),
       uncheckLogo:require('../assets/images/uncheck.png'),
@@ -68,23 +68,21 @@ export default {
       let data =JSON.stringify(this.tasks)
       localStorage.setItem('tasks',data);
       this.counter += 1;
+      console.log('from status')
     },
   },
+  beforeUpdate() {
+    this.tasks = JSON.parse(localStorage.getItem('tasks'))
+
+  },
   mounted() {
-    if (localStorage.getItem('tasks') != null && localStorage.getItem('tasks') !== '[]'){
-      if (localStorage.getItem('tasks') != null && localStorage.getItem('tasks') !== '[]'){
+    if (JSON.parse(localStorage.getItem('tasks')) != null &&JSON.parse(localStorage.getItem('tasks')) !== '[]'){
         this.tasks = JSON.parse(localStorage.getItem('tasks'));
-      }
     }else {
       this.massage = 'You Have No Task To Do'
     }
     this.counter += 1;
   },
-  watch:{
-    tasks(){
-      this.counter +=1;
-    }
-  }
 }
 </script>
 

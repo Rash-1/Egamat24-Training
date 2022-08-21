@@ -4,6 +4,9 @@
       <h2>
         Task Details
       </h2>
+      <h2 v-if="massage !== ''">
+        {{massage}}
+      </h2>
     </div>
     <form>
       <div class="form-group">
@@ -24,11 +27,11 @@
       </div>
       <div class="form-group">
         <label for="date">Change Date</label>
-        <input ref="date" type="datetime-local"  class="form-control" id="changeDate" placeholder="Enter New Date">
+        <input ref="changeDate" type="datetime-local"  class="form-control" id="changeDate" placeholder="Enter New Date">
       </div>
       <div class="form-group">
         <label for="status">Status</label>
-        <input readonly :value="this.task.status ? 'Done':'Not Done'"  ref="date" type="text" class="form-control" id="status" >
+        <input readonly :value="this.task.status ? 'Done':'Not Done'"  ref="status" type="text" class="form-control" id="status" >
       </div>
       <p @click="removeTask()" class="btn btn-danger mx-2 mt-3">Remove Task</p>
       <p @click="editTask()" class="btn btn-warning mt-3">Edit Task</p>
@@ -41,6 +44,7 @@ export default {
   name: "TaskDetail",
   data(){
     return{
+      massage:'',
       counter:0,
       tasks:'',
       task:'',
@@ -54,24 +58,11 @@ export default {
     this.tasks = this.$store.state.tasks;
     this.task = this.taskFinder(this.$route.params.slug)
   },
+  beforeUpdate() {
+    this.task = this.taskFinder(this.$route.params.slug)
+    this.counter += 1;
+  },
   methods:{
-    // timeSeparator(time){
-    //   let myTimeArray = time.split('T')
-    //   let inputTime = myTimeArray[1];
-    //   let inputDate = myTimeArray[0]
-    //   let hour = inputTime.split(':')[0]
-    //   let minute = inputTime.split(':')[1]
-    //   let year = inputDate.split('-')[0]
-    //   let month = inputDate.split('-')[1]
-    //   let day = inputDate.split('-')[2]
-    //   return[
-    //     year,
-    //     month,
-    //     day,
-    //     hour,
-    //     minute,
-    //   ]
-    // },
     taskFinder(slug){
       return  this.tasks.find(T => {return T.slug === slug;})
     },
@@ -86,7 +77,41 @@ export default {
       this.$router.push({name:'all-tasks'});
     },
     editTask(){
+     let index = this.tasks.findIndex(myTask =>{
+       return myTask.slug === this.task.slug;
+     });
+      this.tasks[index] = {
+        title: this.$refs.title.value,
+        description: this.$refs.description.value,
+        deadLine: this.$refs.deadline.value,
+        date: this.taskChangeDate === '' ? this.$refs.date.value : this.taskChangeDate,
+        status: this.$refs.status.value === 'Done',
+        slug:this.slugCreator(this.$refs.title.value)
+      };
+      this.task = this.tasks[index];
+      localStorage.setItem('tasks',JSON.stringify(this.tasks));
+      this.massage = 'Task Edited Successfully'
+      setTimeout(()=>{
+        this.$router.push({name:'all-tasks'})
+      },3000)
+      this.counter +=1;
+    },
+    slugCreator(str){
+      str = str.replace(/^\s+|\s+$/g, ''); // trim
+      str = str.toLowerCase();
 
+      // remove accents, swap ñ for n, etc
+      const from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
+      const to   = "aaaaeeeeiiiioooouuuunc------";
+      for (let i=0, l=from.length ; i<l ; i++) {
+        str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+      }
+
+      str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+          .replace(/\s+/g, '-') // collapse whitespace and replace by -
+          .replace(/-+/g, '-'); // collapse dashes
+
+      return str;
     },
   }
 }
