@@ -24,7 +24,7 @@
       </div>
       <div class="form-group">
         <label for="date">Date</label>
-        <input v-model="task.date" ref="date" type="datetime-local" class="form-control" id="date" placeholder="Enter Date">
+        <input ref="date" type="datetime-local" class="form-control" id="date" placeholder="Enter Date">
       </div>
       <p @click="createTask" class="btn btn-primary mt-3">Create Task</p>
     </form>
@@ -50,11 +50,12 @@ export default {
   },
   methods:{
     createTask(){
-      if (this.task.title !==''){
+      if (this.task.title !== ''){
         if (this.$refs.date.value === '') {
           this.task.date = moment().format('YYYY-MM-DDTHH:mm')
         }
           if (this.$store.state.tasks !== null && this.$store.state.tasks !== [] ){
+            console.log('from if')
             if (this.uniqueChecker(this.task.title)) {
               this.task.slug = this.slugCreator(this.task.title)
               let tasks = this.$store.state.tasks;
@@ -62,6 +63,7 @@ export default {
               tasks = JSON.stringify(tasks)
               localStorage.setItem('tasks', tasks);
               this.massage = 'Task Created SuccessFully'
+              console.log(JSON.parse(localStorage.getItem('tasks')))
               this.clearForm();
             }else {
               this.massage = 'You Have tasks With Same Title'
@@ -73,12 +75,13 @@ export default {
             tasks = JSON.stringify(tasks);
             localStorage.setItem('tasks',tasks);
             this.massage = 'Task Created SuccessFully'
+            console.log(JSON.parse(localStorage.getItem('tasks')))
             this.clearForm();
           }
       }else {
         this.massage = 'Please Enter A Title';
       }
-      console.log('from Create')
+      console.log(this.task)
       this.counter +=1;
       },
     uniqueChecker(title){

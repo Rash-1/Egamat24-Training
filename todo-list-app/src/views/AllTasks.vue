@@ -24,7 +24,7 @@
           <td>{{task.date}}</td>
           <td>{{ task.deadLine }}</td>
           <td>
-            <router-link :to=" `/task-detail/${task.slug}` ">
+            <router-link :to="`/task-detail/${task.slug}`">
               Detail
             </router-link>
           </td>
