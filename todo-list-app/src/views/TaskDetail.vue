@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-5 rounded-5" :key="counter">
+  <div class="container mt-5 rounded-5 " :key="counter">
     <div class="massage text-info" >
       <h2>
         Task Details
@@ -19,7 +19,7 @@
       </div>
       <div class="form-group">
         <label for="deadLine">DeadLine</label>
-        <input :value="this.task.deadLine"   ref="deadline" type="text" class="form-control" id="deadLine" placeholder="Deadline">
+        <input :value="this.task.deadLine"   ref="deadline" type="datetime-local" class="form-control" id="deadLine" placeholder="Deadline">
       </div>
       <div class="form-group">
         <label for="date">Date</label>
@@ -121,7 +121,7 @@ export default {
 .container{
   min-width: 50%;
   max-width: 70%;
-  background-color: #607d8b;
+  background-color: #494949;
   padding: 1.5rem;
 }
 @media(max-width: 1024px)   {
@@ -129,7 +129,10 @@ export default {
     font-size: 1.9rem;
   }
 }
-h1{
-  color:#c3fdff;
+h2{
+  color:#819ca9;
+}
+label{
+  color: #e0e0e0;
 }
 </style>

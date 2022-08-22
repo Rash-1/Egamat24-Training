@@ -99,4 +99,7 @@ export default {
 a{
   cursor: pointer;
 }
+h1{
+  color: #e0e0e0;
+}
 </style>

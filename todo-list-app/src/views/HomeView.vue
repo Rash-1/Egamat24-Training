@@ -1,5 +1,5 @@
 <template>
-  <div class=" homed-flex flex-column align-items-center justify-content-center">
+  <div class=" home d-flex flex-column align-items-center justify-content-center">
    <h1 class="mt-5 msg1">{{massage1}}</h1>
    <h1 class="mt-5 msg2">{{massage2}}</h1>
   </div>
@@ -32,7 +32,13 @@ export default {
 }
 h1{
   font-size: 5rem;
-  color: #1f8de8;
+  color: #efefef;
+}
+.home{
+  min-height: 80vh;
+  margin: 1rem;
+  background-color: transparent;
+
 }
 
 </style>

@@ -35,7 +35,7 @@ export default {
 
 <style scoped>
 .container {
-  border: 3px solid #4f5b62;
+  border: 3px solid #ccc;
   border-radius:15px ;
   padding: .3rem;
   margin-top: 1.5rem;
@@ -50,10 +50,13 @@ export default {
 }
 .filtering{
   padding: .5rem;
-  border: 3px solid #4f5b62;
+  border: 3px solid #ccc;
   border-radius:15px ;
   max-width: 65%;
   margin: 5px auto;
+}
+h1{
+  color:#e0e0e0 ;
 }
 .container::-webkit-scrollbar{
   display: none;
@@ -70,7 +73,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  background-color:#29434e ;
+  background-color:transparent ;
   min-width: 50vw;
   padding: .5rem;
   color: cornsilk;
