@@ -1,0 +1,74 @@
+body{
+    height: 100vh;
+    width: 100vw;
+    background-image: url("../images/BG-Image.jpg");
+    background-size: cover;
+    z-index: 1;
+    background-repeat: no-repeat;
+}
+#root{
+    max-width: 100%;
+    max-height: 100%;
+    overflow-y: scroll;
+    overflow-x:hidden ;
+}
+#root::-webkit-scrollbar{
+    display: none;
+}
+.task{
+    margin-top:.5rem;
+    background-color:#000010 ;
+    padding: 1rem;
+    min-width: 70%;
+    max-width: 70%;
+    border-radius: 2rem;
+    color: #ffffff;
+}
+.tasks textarea,.tasks input{
+    background-color:transparent;
+    color: #ffffff;
+}
+.task img{
+    width: 35px;
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+}
+.tasks{
+    background-color: transparent;
+    margin: 1.5rem .5rem 1rem .5rem;
+    display: flex;
+    flex-direction: column;
+    height: 75vh;
+    overflow: scroll;
+    align-items: center;
+}
+.tasks::-webkit-scrollbar{
+    display: none;
+}
+.create-task{
+    margin: 2rem auto;
+    padding: 1rem;
+    border-radius: 1rem;
+    max-width: 60%;
+    display: flex;
+    flex-direction: column;
+    background-color:#000010 ;
+}
+.error{
+    margin: 5px 0;
+    padding: 2px;
+    border-radius: 2rem;
+    color: #c62828;
+    background-color: #ffffff;
+    text-align: center;
+}
+.inputC{
+    background-color: transparent;
+    color: #ffffff;
+}
+.inputD{
+    background-color:#000010 ;
+    color: #ffffff;
+}
