@@ -1,22 +1,23 @@
+import {useContext, useState} from "react";
 import TasksContext from "../context/tasks";
-import {useContext, useState, useRef, useEffect} from "react";
 import Task from "./task"
-
-
-const Tasks = ()=>{
+import moment from "moment";
+const AllTasks = ()=>{
     const tasksContext = useContext(TasksContext);
     const [label,setLabel] = useState('All Task');
     const [doneTasks,setDoneTasks] = useState([])
-    const [checked,setChecked] = useState(true);
+    const [DoneChecked,setDoneChecked] = useState(true);
     return(
         <>
             <h1 className="text-center">{label}</h1>
             <div className="text-center">
-                <label htmlFor="checkBox">Show Done Tasks</label>
-                <input checked={!checked} onChange={checkBoxChange}  id="checkBox" type="checkbox" className="form-check-input"/>
+                <div>
+                    <label htmlFor="checkBox">Show Done Tasks</label>
+                    <input checked={!DoneChecked} onChange={DoneCheckBoxChange}  id="checkBox" type="checkbox" className="form-check-input"/>
+                </div>
             </div>
             {
-                !checked ?
+                !DoneChecked ?
                     (
                         <div className="tasks">
                             {doneTasks.map((task,index)=>(
@@ -32,13 +33,13 @@ const Tasks = ()=>{
                             ))}
                         </div>
                     )
+
             }
         </>
     )
-
-    function checkBoxChange(){
-        setChecked(!checked)
-        if (checked){
+    function DoneCheckBoxChange(){
+        setDoneChecked(!DoneChecked)
+        if (DoneChecked){
             setLabel('Done Tasks')
             let filteredTasks = tasksContext.Tasks.filter((task)=>{
                 return task.status === "Done"
@@ -48,8 +49,7 @@ const Tasks = ()=>{
             setLabel('All Tasks')
             setDoneTasks([])
         }
-        console.log(checked)
     }
 }
 
-export default Tasks;
+export default AllTasks;

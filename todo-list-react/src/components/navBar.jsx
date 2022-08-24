@@ -16,7 +16,7 @@ const NavBar = ()=>{
                 return{
                     color:isActive ? '#1565c0' : 'black'
                 }
-            }} className="nav-link mx-3" to="/tasks">Tasks</NavLink>
+            }} className="nav-link mx-3" to="/tasks">Tasks List</NavLink>
             <NavLink style={({isActive})=>{
                 return{
                     color:isActive ? '#1565c0' : 'black'

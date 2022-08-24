@@ -1,10 +1,12 @@
 import {Route,BrowserRouter,Routes,Navigate} from "react-router-dom";
 import NavBar from "./components/navBar";
 import Home from "./components/home";
-import Task from "./components/task";
-import Tasks from "./components/tasks";
+
+import TasksList from "./components/tasksList";
 import CreateTask from "./components/createTask";
 import EditTask from "./components/editTask";
+import AllTasks from "./components/allTasks";
+import TasksFilterByDate from "./components/tasksFilteredByDate"
 import TasksContext from "./context/tasks";
 import {useState, useEffect} from "react";
 const App = ()=>{
@@ -22,9 +24,9 @@ const App = ()=>{
         }
     }, []);
     useEffect(()=>{
-     let newtasks = [...tasksList];
-     localStorage.setItem('Tasks',JSON.stringify(newtasks));
-     console.log(newtasks)
+     let newTasks = [...tasksList];
+     localStorage.setItem('Tasks',JSON.stringify(newTasks));
+     console.log(newTasks)
      console.log('taskList updated')
     })
     return <>
@@ -43,7 +45,10 @@ const App = ()=>{
             <Routes>
                 <Route path='/home' element={<Home/>}/>,
                 <Route path='/' element={<Navigate replace to="/home" />}/>,
-                <Route path='/tasks' element={<Tasks/>} />,
+                <Route path='/tasks' element={<TasksList/>} >
+                    <Route path='all-tasks' element={<AllTasks/>}/>,
+                    <Route path='tasks-filtered-by-date' element={<TasksFilterByDate/>}/>,
+                </Route>,
                 <Route path='edit-task/:taskId' element={<EditTask/>}/>,
                 <Route path='/create-task' element={<CreateTask/>}/>,
             </Routes>

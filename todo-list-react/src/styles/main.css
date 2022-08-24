@@ -72,3 +72,19 @@ body{
     background-color:#000010 ;
     color: #ffffff;
 }
+.tasks-list{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 3fr 1fr;
+    margin: 0 .5rem;
+}
+.tasks-list a{
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    margin-top: 1rem;
+}
+
+.Tasks-list-title{
+text-align: center;
+}

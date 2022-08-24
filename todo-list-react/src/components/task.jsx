@@ -1,6 +1,6 @@
 import doneLogo from "../images/done.png";
 import notDoneLogo from "../images/notDone.png";
-import {useNavigate,Redirect} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {useContext} from "react";
 import TasksContext from "../context/tasks";
 
