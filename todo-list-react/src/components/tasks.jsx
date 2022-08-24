@@ -44,6 +44,9 @@ const Tasks = ()=>{
                 return task.status === "Done"
             })
             setDoneTasks(filteredTasks)
+        }else{
+            setLabel('All Tasks')
+            setDoneTasks([])
         }
         console.log(checked)
     }
