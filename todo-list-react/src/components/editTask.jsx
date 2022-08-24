@@ -1,8 +1,9 @@
-
+import {useParams} from "react-router-dom";
 
 const EditTask = ()=>{
+   const {taskId} = useParams();
     return <>
-        <h1>EditTask</h1>
+        <h1>{taskId}</h1>
     </>
 }
 

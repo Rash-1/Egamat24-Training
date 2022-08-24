@@ -36,16 +36,15 @@ const App = ()=>{
                    OnAddTasks : AddTask,
                    OnDeleteTask : DeleteTask,
                    OnTaskStatusChanger : TaskStatusChanger,
-                   OnEditTask : EditTask,
+                   OnEditTask : TaskEdit,
                }
             }>
             <NavBar/>
             <Routes>
                 <Route path='/home' element={<Home/>}/>,
                 <Route path='/' element={<Navigate replace to="/home" />}/>,
-                <Route path='/tasks' element={<Tasks/>} >
-                    <Route path='edit-task/:taskId' element={<EditTask/>}/>,
-                </Route>,
+                <Route path='/tasks' element={<Tasks/>} />,
+                <Route path='edit-task/:taskId' element={<EditTask/>}/>,
                 <Route path='/create-task' element={<CreateTask/>}/>,
             </Routes>
             </TasksContext.Provider>
@@ -71,7 +70,7 @@ const App = ()=>{
         console.log(newTasks[index])
         setTasksList(newTasks);
     }
-    function EditTask(id){
+    function TaskEdit(id){
      console.log(id)
     }
 }
