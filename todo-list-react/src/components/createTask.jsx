@@ -1,12 +1,13 @@
 import {useFormik} from "formik";
 import * as yup from "yup";
 import Input from "./input";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import TasksContext from "../context/tasks";
 import moment from "moment";
 
 const CreateTask = (props)=>{
     const tasksContext = useContext(TasksContext)
+    const [massage,setmassage] = useState(null);
     const CreateTaskFormik = useFormik({
         initialValues:{
             title:'',
@@ -24,6 +25,7 @@ const CreateTask = (props)=>{
                 id:tasksContext.Tasks.length +1 ,
             };
             addTask(Task);
+            clearForm();
         },
         validationSchema:yup.object({
             title:yup.string()
@@ -39,6 +41,9 @@ const CreateTask = (props)=>{
     return (
         <>
             <h1 className="text-center mt-1">Create New Task</h1>
+            {massage !== null &&(
+                <h1 className="text-center mt-1">{massage}</h1>
+            )}
             <div className="create-task ">
                 <form onSubmit={CreateTaskFormik.handleSubmit}>
                    <Input name="title" type="text" Title="Title" formik={CreateTaskFormik}/>
@@ -54,6 +59,15 @@ const CreateTask = (props)=>{
     )
     function addTask(task){
         tasksContext.OnAddTasks(task);
+    }
+    function clearForm(){
+        setmassage('Task Created successfully')
+        setTimeout(()=>{
+            setmassage(null);
+            CreateTaskFormik.values.title = '';
+            CreateTaskFormik.values.description = '';
+            CreateTaskFormik.values.date = '';
+        },1500)
     }
 }
 
