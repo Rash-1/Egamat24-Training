@@ -1,0 +1,18 @@
+{
+  "name": "blog-sqlite",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "compile": "gulp sass",
+    "watch": "gulp sass:watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.54.5"
+  }
+}
