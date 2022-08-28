@@ -8,6 +8,6 @@ password TEXT NOT NULL
 CREATE TABLE articles(
 id INTEGER PRIMARY KEY AUTOINCREMENT,
 title TEXT NOT NULL UNIQUE,
-summery TEXT,
-description TEXT
+summery TEXT NOT NULL,
+description TEXT NOT NULL
 );
