@@ -15,19 +15,15 @@ const App = ()=>{
         if (localStorage.getItem('Tasks') === null || localStorage.getItem('Tasks') === '[]'){
             let tasks = [...tasksList];
             localStorage.setItem('Tasks',JSON.stringify(tasks));
-            console.log('from - mount');
-            console.log('local empty')
         }else{
             let oldTasks = JSON.parse(localStorage.getItem('Tasks'))
             setTasksList(oldTasks);
-            console.log('local full')
+
         }
     }, []);
     useEffect(()=>{
      let newTasks = [...tasksList];
      localStorage.setItem('Tasks',JSON.stringify(newTasks));
-     console.log(newTasks)
-     console.log('taskList updated')
     })
     return <>
         <BrowserRouter>
@@ -72,11 +68,19 @@ const App = ()=>{
             return task.id === id
         })
         newTasks[index].status = newTasks[index].status === 'Not Done'? newTasks[index].status = "Done" : newTasks[index].status = "Not Done"
-        console.log(newTasks[index])
         setTasksList(newTasks);
     }
     function TaskEdit(id){
-     console.log(id)
+        // let index =  tasksList.findIndex((task)=>{
+        //     return task.id = id;
+        // })
+        // let newTasks = [...tasksList];
+        // newTasks[index].title = newTaskValues.title;
+        // newTasks[index].description = newTaskValues.description;
+        // newTasks[index].date = newTaskValues.date;
+        // setTasksList(newTasks);
+        console.log(id);
+        // console.log(newTaskValues);
     }
 }
 
