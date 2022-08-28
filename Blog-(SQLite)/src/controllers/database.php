@@ -67,4 +67,12 @@ class Articles extends Database {
         $result =$pdo->prepare($query);
         return $result->execute($data);
     }
+    function findArticle($articleTitle){
+        $pdo = $this->connect();
+        $query = "SELECT * FROM articles WHERE title=:title";
+        $data = ['title'=>$articleTitle];
+        $result =$pdo->prepare($query);
+        $result->execute($data);
+        return $result->fetch();
+    }
 }
