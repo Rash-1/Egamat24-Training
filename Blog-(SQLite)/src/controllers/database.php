@@ -9,10 +9,10 @@ class Database{
             return $pdo;
         }catch (PDOException $exception){
             echo "Connection Failed".$exception->getMessage();
+            exit();
         }
     }
 }
-
 
 class Admins extends Database {
     function countAdmins(){
@@ -39,6 +39,7 @@ class Admins extends Database {
         return $result->execute($data);
     }
 }
+
 class Articles extends Database {
     function getArticles(){
         $pdo = $this->connect();

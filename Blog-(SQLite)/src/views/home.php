@@ -13,22 +13,23 @@ require ('../controllers/database.php');
 <body>
 <header class="navbar">
     <p id="banner">My Blog</p>
-    <a href="./login.php">Admins</a>
+    <a href="./admin/login.php">Admins</a>
 </header>
 <main>
     <p class="header">Articles</p>
     <?php
     $articles = new Articles();
-    if (count($articles->getArticles()) > 0){
-        $myArticles = $articles->getArticles();
-        echo '<div class="articles">';
-        foreach ($myArticles as $article){
-            echo '<div class="article">';
-            echo '<p class="title">'.$article['title'].'</p>';
-            echo '<p class="summery">'.$article['summery'].'<a href="./details.php?title='.$article['title'].'"'.'>...+more</a>'.'</p>';
+        if (count($articles->getArticles()) > 0){
+            $myArticles = $articles->getArticles();
+            echo '<div class="articles">';
+                foreach ($myArticles as $article){
+                    echo '<div class="article">';
+                        echo '<p class="title">'.$article['title'].'</p>';
+                        echo '<p  class="summery">'.$article['summery'].'<a href="./details.php?title='.$article['title'].'"'.'>...+more</a>'.'</p>';
+                    echo '</div>';
+                }
             echo '</div>';
         }
-    }
     ?>
 </main>
 </body>
