@@ -1,9 +1,11 @@
 <?php
 
 require_once('database.php');
+
 $title = $_POST['title'];
 $summery = $_POST['summery'];
 $description = $_POST['description'];
+
 if (!empty($title)){
     $article = new Articles();
     $result = $article->addArticle($title,$summery,$description);
