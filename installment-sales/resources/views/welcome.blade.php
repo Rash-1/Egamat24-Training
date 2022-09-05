@@ -7,9 +7,11 @@
         <title>Laravel</title>
         <!-- Fonts -->
         <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-        @vite(['resources/sass/app.scss'])
+        @vite(['resources/css/app.css', 'resources/sass/app.scss', 'resources/js/app.js','resources/css/bootstrap.min.css'])
     </head>
-    <body >
-        Hello
+    <body>
+        <div class="container text-center text-danger mt-4 ">
+            hello
+        </div>
     </body>
 </html>
