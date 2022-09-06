@@ -28,3 +28,9 @@ Route::prefix('client')->name('client.')->controller(ClientController::class)->g
 
     Route::get('/logout', 'logout')->name('logout');
 });
+
+Route::prefix('provider')->name('provider')->group(function (){
+
+    Route::view('/dashboard','provider/dashboard')->name('dashboard');
+
+});
