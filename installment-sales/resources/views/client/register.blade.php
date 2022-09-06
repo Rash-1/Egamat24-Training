@@ -1,4 +1,5 @@
 @extends('layouts.main')
+@section('title','Clients Register')
 
 @section('contents')
     <div class="client-login-form row justify-content-center">

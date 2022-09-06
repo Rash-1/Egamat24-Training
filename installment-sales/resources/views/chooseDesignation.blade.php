@@ -1,5 +1,5 @@
 @extends('layouts.main')
-
+@section('title','Choose Designation')
 @section('contents')
     <div class="choose-designation mt-5 row justify-content-center align-content-center">
         <div class="card text-center col-lg-4 col-sm-8 p-1">
