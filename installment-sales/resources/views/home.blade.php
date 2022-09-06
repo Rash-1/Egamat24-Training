@@ -1,6 +1,5 @@
 @extends('layouts.main')
 @section('title','Home Page')
-
 @section('contents')
     <div class="row">
         <div class="col-lg-9 row justify-content-between">

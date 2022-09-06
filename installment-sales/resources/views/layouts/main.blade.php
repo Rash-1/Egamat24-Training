@@ -14,7 +14,7 @@
     ])
 </head>
 <body>
-@include('navbar')
+@include('navbar',['header'=>'Instalment Sales'])
 <div class="container my-4">
 @yield('contents')
 </div>
