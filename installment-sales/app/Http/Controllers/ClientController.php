@@ -30,16 +30,16 @@ class ClientController extends Controller
     {
         $validData = $request->validated();
         $username = $validData['username'];
-        $firstName = $validData['firstName'];
-        $lastName = $validData['lastName'];
+        $firstname = $validData['firstname'];
+        $lastname = $validData['lastname'];
         $password = $validData['password'];
         $client = client::create([
             'username' => $username,
-            'firstName' => $firstName,
-            'lastName' => $lastName,
+            'firstname' => $firstname,
+            'lastname' => $lastname,
             'password' => Hash::make($password),
         ]);
-        return redirect()->route('client.login-form')->with('success', 'welcome ' . $firstName . ' ' . $lastName . ' you are registered successfully');
+        return redirect()->route('client.login-form')->with('success', 'welcome ' . $firstname . ' ' . $lastname . ' you are registered successfully');
     }
 
     function logout(){

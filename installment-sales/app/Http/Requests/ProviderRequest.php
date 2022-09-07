@@ -24,11 +24,11 @@ class ProviderRequest extends FormRequest
     public function rules()
     {
         return [
-            'firstName' => 'required|string',
-            'lastName' => 'required|string',
+            'firstname' => 'required|string',
+            'lastname' => 'required|string',
             'username' => 'required|max:20|unique:providers,username',
             'password' => 'required|min:8',
-            'workField' => 'required',
+            'work-field' => 'required',
         ];
     }
 }

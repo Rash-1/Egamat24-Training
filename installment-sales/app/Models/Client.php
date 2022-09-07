@@ -10,12 +10,12 @@ class Client extends Authenticatable
     use HasFactory;
 
     protected $table = 'clients';
-    protected $fillable = ['firstName', 'lastName', 'username', 'password'];
+    protected $fillable = ['firstname', 'lastname', 'username', 'password'];
 
 
     public function providedServices()
     {
-        return $this->belongsToMany(ProvidedService::class, 'providedServicesReports');
+        return $this->belongsToMany(ProvidedService::class);
 
     }
 }

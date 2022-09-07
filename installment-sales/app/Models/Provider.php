@@ -9,7 +9,7 @@ class Provider extends Authenticatable
 {
     use HasFactory;
 
-    protected $fillable = ['workField_id', 'firstName', 'lastName', 'username', 'password'];
+    protected $fillable = ['work_field_id', 'firstname', 'lastname', 'username', 'password'];
 
     public function workField()
     {

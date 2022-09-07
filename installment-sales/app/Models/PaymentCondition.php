@@ -9,11 +9,13 @@ class PaymentCondition extends Authenticatable
 {
     use HasFactory;
 
-    protected $fillable = ['totalCost', 'numberOfInstalments', 'eachInstalmentAmount', 'description'];
+    protected $table = 'payment_conditions';
+
+    protected $fillable = ['provider_id','total_cost', 'number_of_instalments', 'each_instalment_amount', 'description'];
 
     public function services()
     {
-        return $this->belongsToMany(Service::class);
+        return $this->belongsToMany(Service::class,'provided_services');
     }
     public function provider(){
         return $this->belongsTo(Provider::class);

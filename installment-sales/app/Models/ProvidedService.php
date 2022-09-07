@@ -9,10 +9,10 @@ class ProvidedService extends Authenticatable
 {
     use HasFactory;
 
-    protected $fillable = ['service_id','paymentCondition_id'];
+    protected $fillable = ['service_id','payment_condition_id'];
 
     public function clients()
     {
-        return $this->belongsToMany(Client::class, 'providedServicesReports');
+        return $this->belongsToMany(Client::class);
     }
 }
