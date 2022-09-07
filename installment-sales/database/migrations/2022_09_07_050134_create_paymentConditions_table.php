@@ -14,6 +14,8 @@ return new class extends Migration {
     {
         Schema::create('paymentConditions', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('provider_id');
+            $table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade');
             $table->integer('totalCost');
             $table->integer('numberOfInstalments');
             $table->integer('eachInstalmentAmount');

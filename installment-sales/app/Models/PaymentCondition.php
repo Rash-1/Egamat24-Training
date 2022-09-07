@@ -15,4 +15,7 @@ class PaymentCondition extends Authenticatable
     {
         return $this->belongsToMany(Service::class);
     }
+    public function provider(){
+        return $this->belongsTo(Provider::class);
+    }
 }

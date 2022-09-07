@@ -13,11 +13,14 @@ class Provider extends Authenticatable
 
     public function workField()
     {
-        $this->belongsTo(WorkField::class);
+       return $this->belongsTo(WorkField::class,);
     }
 
     public function services()
     {
         return $this->hasMany(Service::class);
+    }
+    public function paymentConditions(){
+        return $this->hasMany(PaymentCondition::class);
     }
 }
