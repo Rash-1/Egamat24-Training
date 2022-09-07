@@ -43,6 +43,10 @@ return [
             'driver' => 'session',
             'provider' => 'clients',
         ],
+        'providers' => [
+            'driver' => 'session',
+            'provider' => 'providers',
+        ],
     ],
 
     /*
@@ -69,7 +73,11 @@ return [
         ],
         'clients' => [
             'driver' => 'eloquent',
-            'model' => App\Models\client::class,
+            'model' => App\Models\Client::class,
+        ],
+        'providers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Provider::class,
         ],
 
         // 'users' => [
