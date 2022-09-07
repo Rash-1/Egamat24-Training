@@ -24,7 +24,7 @@ class PaymentConditionRequest extends FormRequest
     public function rules()
     {
         return [
-            'description' => 'required|min:3|max:30|string',
+            'description' => 'required|min:3|max:25|string',
             'total-cost' => 'required|integer',
             'number-of-instalments' => 'required|integer',
             'each-instalment-amount' => 'required|integer',
