@@ -14,9 +14,9 @@ return new class extends Migration {
     {
         Schema::create('providers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('workField_id');
-            $table->string('firstName');
-            $table->string('lastName');
+            $table->unsignedBigInteger('work_field_id');
+            $table->string('firstname');
+            $table->string('lastname');
             $table->string('username');
             $table->string('password');
             $table->timestamps();

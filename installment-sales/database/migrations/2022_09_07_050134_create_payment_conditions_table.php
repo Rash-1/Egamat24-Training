@@ -12,13 +12,13 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('paymentConditions', function (Blueprint $table) {
+        Schema::create('payment_conditions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('provider_id');
             $table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade');
-            $table->integer('totalCost');
-            $table->integer('numberOfInstalments');
-            $table->integer('eachInstalmentAmount');
+            $table->integer('total_cost');
+            $table->integer('number_of_instalments');
+            $table->integer('each_instalment_amount');
             $table->text('description');
             $table->timestamps();
         });
@@ -31,6 +31,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('paymentConditions');
+        Schema::dropIfExists('payment_conditions');
     }
 };

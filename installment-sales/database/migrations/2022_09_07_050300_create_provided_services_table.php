@@ -12,13 +12,13 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('providedServices', function (Blueprint $table) {
+        Schema::create('provided_services', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('service_id');
-            $table->unsignedBigInteger('paymentCondition_id');
+            $table->unsignedBigInteger('payment_condition_id');
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
-            $table->foreign('paymentCondition_id')->references('id')->on('paymentConditions')->onDelete('cascade');
-            $table->unique(['service_id', 'paymentCondition_id']);
+            $table->foreign('payment_condition_id')->references('id')->on('payment_conditions')->onDelete('cascade');
+            $table->unique(['service_id', 'payment_condition_id']);
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('providedServices');
+        Schema::dropIfExists('provided_services');
     }
 };
