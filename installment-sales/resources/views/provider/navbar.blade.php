@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <a class="navbar-brand" href="#!">{{$header}}</a>
+        @if(auth('providers')->check())
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
                 class="navbar-toggler-icon"></span></button>
@@ -9,8 +10,9 @@
                 <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Define New Service</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Define New Payment Condition</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('provider.logout')}}">{{auth('providers')->user()->username}} - Logout</a></li>
             </ul>
         </div>
+        @endif
     </div>
 </nav>

@@ -11,7 +11,7 @@
                     <a class="text-decoration-none text-white" href="{{route('client.login-form')}}">Client</a>
                 </p>
                 <p class="my-1 bg-secondary rounded-1 p-3 my-2">
-                    <a class="text-decoration-none text-white" href="#">Provider</a>
+                    <a class="text-decoration-none text-white" href="{{route('provider.login-form')}}">Provider</a>
                 </p>
             </div>
         </div>

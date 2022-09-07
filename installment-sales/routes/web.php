@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\ProviderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,8 +30,18 @@ Route::prefix('client')->name('client.')->controller(ClientController::class)->g
     Route::get('/logout', 'logout')->name('logout');
 });
 
-Route::prefix('provider')->name('provider')->group(function (){
+Route::prefix('provider')->name('provider.')->group(function () {
 
+    Route::view('/login', 'provider/authentication/login')->name('login-form');
+    Route::view('/register', 'provider/authentication/register')->name('register-form');
     Route::view('/dashboard','provider/dashboard')->name('dashboard');
+
+    Route::controller(ProviderController::class)->group(function () {
+
+        Route::post('/login','login')->name('login');
+        Route::post('/register','register')->name('register');
+
+        Route::get('/logout','logout')->name('logout');
+    });
 
 });

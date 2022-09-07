@@ -13,7 +13,7 @@ class ProviderRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class ProviderRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'firstName' => 'required|string',
+            'lastName' => 'required|string',
+            'username' => 'required|max:20|unique:providers,username',
+            'password' => 'required|min:8',
+            'workField' => 'required',
         ];
     }
 }
