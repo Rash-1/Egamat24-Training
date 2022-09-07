@@ -9,12 +9,12 @@
             <form method="post" action="{{route('client.register')}}">
                 @csrf
                 <div>
-                    <label class="form-label text-white" for="first-name">First Name</label>
-                    <input class="form-control" type="text" id="first-name" name="firstName">
+                    <label class="form-label text-white" for="firstname">First Name</label>
+                    <input class="form-control" type="text" id="firstname" name="firstname">
                 </div>
                 <div>
-                    <label class="form-label text-white" for="last-name">Last Name</label>
-                    <input class="form-control" type="text" id="last-name" name="lastName">
+                    <label class="form-label text-white" for="lastname">Last Name</label>
+                    <input class="form-control" type="text" id="lastname" name="lastname">
                 </div>
                 <div>
                     <label class="form-label text-white" for="username">Username</label>

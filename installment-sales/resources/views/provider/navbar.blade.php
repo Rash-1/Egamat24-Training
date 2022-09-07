@@ -7,9 +7,9 @@
                 class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Define New Service</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Define New Payment Condition</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('provider.dashboard')}}">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('provider.services.define-form')}}">Define New Service</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('provider.payment-conditions.define-form')}}">Define New Payment Condition</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{route('provider.logout')}}">{{auth('providers')->user()->username}} - Logout</a></li>
             </ul>
         </div>

@@ -9,12 +9,12 @@
             <form method="post" action="{{route('provider.register')}}">
                 @csrf
                 <div>
-                    <label class="form-label text-white" for="first-name">First Name</label>
-                    <input class="form-control" type="text" id="first-name" name="firstName">
+                    <label class="form-label text-white" for="firstname">First Name</label>
+                    <input class="form-control" type="text" id="firstname" name="firstname">
                 </div>
                 <div>
-                    <label class="form-label text-white" for="last-name">Last Name</label>
-                    <input class="form-control" type="text" id="last-name" name="lastName">
+                    <label class="form-label text-white" for="lastname">Last Name</label>
+                    <input class="form-control" type="text" id="lastname" name="lastname">
                 </div>
                 <div>
                     <label class="form-label text-white" for="username">Username</label>
@@ -25,10 +25,10 @@
                     <input class="form-control" type="password" id="password" name="password">
                 </div>
                 <div>
-                    <label class="form-label text-white" for="workField">Field Of Work</label>
-                    <select class="form-select" name="workField" id="workField">
-                        @foreach(\App\Models\WorkField::all() as $workField)
-                            <option value="{{$workField->id}}">{{$workField->name}}</option>
+                    <label class="form-label text-white" for="work-field">Field Of Work</label>
+                    <select class="form-select" name="work-field" id="work-field">
+                        @foreach(\App\Models\WorkField::all() as $work_field)
+                            <option value="{{$work_field->id}}">{{$work_field->name}}</option>
                         @endforeach
                     </select>
                 </div>

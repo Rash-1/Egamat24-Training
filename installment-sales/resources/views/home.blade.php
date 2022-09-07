@@ -2,17 +2,21 @@
 @section('title','Home Page')
 @section('contents')
     <div class="row">
-        <div class="col-lg-9 row justify-content-between">
-            <div class="mb-2 col-lg-6">
-                <div class="card p-3">
-                    <div class="small text-muted">January 1, 2022</div>
-                    <h2 class="card-title h4">Post Title</h2>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis
-                        aliquid atque, nulla.</p>
-                    <a class="btn btn-primary" href="#!">Read more →</a>
-                </div>
-            </div>
-        </div>
+{{--        @dd(\App\Models\Service::all())--}}
+        {{--        @foreach()--}}
+                    <div class="col-lg-9 row justify-content-between">
+                        <div class="mb-2 col-lg-6">
+                            <div class="card p-3">
+                                <div class="small text-muted">January 1, 2022</div>
+                                <h2 class="card-title h4">Post Title</h2>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis
+                                    aliquid atque, nulla.</p>
+                                <a class="btn btn-primary" href="#!">Request Service</a>
+                            </div>
+                        </div>
+                    </div>
+        {{--        @endforeach--}}
+
         <div class="col-lg-3">
             <div class="card mb-4">
                 <div class="card-header">Categories</div>
