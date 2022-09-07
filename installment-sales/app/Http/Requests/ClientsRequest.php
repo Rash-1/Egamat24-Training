@@ -26,7 +26,7 @@ class ClientsRequest extends FormRequest
         return [
             'firstName'=>'required|string',
             'lastName'=>'required|string',
-            'username'=>'required|string|unique:clients,username',
+            'username'=>'required|string|unique:clients,username|max:20',
             'password'=>'required|min:8',
         ];
     }
