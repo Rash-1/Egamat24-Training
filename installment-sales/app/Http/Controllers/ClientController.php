@@ -39,7 +39,7 @@ class ClientController extends Controller
             'lastName' => $lastName,
             'password' => Hash::make($password),
         ]);
-        return redirect()->route('client.login-form')->with('success', 'register successfully');
+        return redirect()->route('client.login-form')->with('success', 'welcome ' . $firstName . ' ' . $lastName . ' you are registered successfully');
     }
 
     function logout(){
