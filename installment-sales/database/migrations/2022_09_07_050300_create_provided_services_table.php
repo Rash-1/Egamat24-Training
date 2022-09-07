@@ -16,6 +16,8 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('service_id');
             $table->unsignedBigInteger('payment_condition_id');
+            $table->unsignedBigInteger('provider_id');
+            $table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade');
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
             $table->foreign('payment_condition_id')->references('id')->on('payment_conditions')->onDelete('cascade');
             $table->unique(['service_id', 'payment_condition_id']);
