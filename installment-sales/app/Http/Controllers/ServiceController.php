@@ -23,7 +23,7 @@ class ServiceController extends Controller
             }
         }
         $new_service = Service::create($new_service_fields);
-        $new_service->paymentConditions()->attach($payment_conditions_identities);
+        $new_service->paymentConditions()->attach($payment_conditions_identities,['provider_id'=>auth('providers')->user()->id]);
         return redirect()->back()->with('success','Service/Services Created Successfully');
     }
 }
