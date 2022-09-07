@@ -2,84 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ServiceRequest;
 use App\Models\Service;
-use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function define(ServiceRequest $request)
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Service  $service
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Service $service)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Service  $service
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Service $service)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Service  $service
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Service $service)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Service  $service
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Service $service)
-    {
-        //
+        $provider_services_title = auth('providers')->user()->services()->pluck('title');
+        $valid_data = $request->validated();
+        $new_service_fields = [
+            'provider_id' => auth('providers')->user()->id,
+            'title' => $valid_data['title'],
+            'description' => $valid_data['description']
+        ];
+        $payment_conditions_identities = $valid_data['payment-conditions'];
+        foreach ($provider_services_title as $title) {
+            if ($request->title === $title) {
+                return redirect()->back()->with('error', 'This title already used');
+            }
+        }
+        $new_service = Service::create($new_service_fields);
+        $new_service->paymentConditions()->attach($payment_conditions_identities);
+        return redirect()->back()->with('success','Service/Services Created Successfully');
     }
 }

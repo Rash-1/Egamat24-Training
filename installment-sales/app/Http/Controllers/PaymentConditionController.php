@@ -2,84 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PaymentConditionRequest;
 use App\Models\PaymentCondition;
-use Illuminate\Http\Request;
 
 class PaymentConditionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function define(PaymentConditionRequest $request)
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\PaymentCondition  $paymentCondition
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PaymentCondition $paymentCondition)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\PaymentCondition  $paymentCondition
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(PaymentCondition $paymentCondition)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PaymentCondition  $paymentCondition
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, PaymentCondition $paymentCondition)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\PaymentCondition  $paymentCondition
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PaymentCondition $paymentCondition)
-    {
-        //
+        $valid_data = $request->validated();
+        $new_payment_condition = [
+            'provider_id' => auth('providers')->user()->id,
+            'total_cost' => $valid_data['total-cost'],
+            'number_of_instalments' => $valid_data['number-of-instalments'],
+            'each_instalment_amount' => $valid_data['each-instalment-amount'],
+            'description' => $valid_data['description'],
+        ];
+        foreach (auth('providers')->user()->paymentConditions()->get()->pluck('description') as $description){
+            if ($valid_data['description'] === $description){
+                return redirect()->back()->with('error','You Already Have Payment Condition With Same Description');
+            }
+        }
+        PaymentCondition::create($new_payment_condition);
+        return redirect()->back()->with('success','Payment Condition Created Successfully');
     }
 }

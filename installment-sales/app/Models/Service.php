@@ -18,6 +18,6 @@ class Service extends Authenticatable
 
     public function paymentConditions()
     {
-        return $this->belongsToMany(PaymentCondition::class);
+        return $this->belongsToMany(PaymentCondition::class,'provided_services');
     }
 }

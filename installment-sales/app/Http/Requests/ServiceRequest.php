@@ -13,7 +13,7 @@ class ServiceRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class ServiceRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title'=>'required|min:5|max:25',
+            'description'=>'required|min:5|max:100',
+            'payment-conditions'=>'required',
         ];
     }
 }
