@@ -14,7 +14,7 @@
 </head>
 <body>
 @include('provider/navbar',['header'=>'Providers Dashboard'])
-<div class="container my-4">
+<div class="content container my-4">
     @yield('contents')
 </div>
 </body>

@@ -1,0 +1,8 @@
+body{
+    .service{
+        border-bottom: 1px gray solid;
+    }
+}
+body::-webkit-scrollbar{
+    display: none;
+}

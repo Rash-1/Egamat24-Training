@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\PaymentConditionController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\ServiceController;
@@ -17,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'home')->name('home-page');
+Route::get('/', [HomePageController::class, 'index'])->name('home-page');
 Route::view('/choose-designation', 'chooseDesignation')->name('choose-designation');
 
 Route::prefix('client')
@@ -38,7 +40,7 @@ Route::prefix('provider')->name('provider.')->group(function () {
 
     Route::view('/login', 'provider/authentication/login')->name('login-form');
     Route::view('/register', 'provider/authentication/register')->name('register-form');
-    Route::view('/dashboard', 'provider/dashboard')->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
     Route::controller(ProviderController::class)->group(function () {
