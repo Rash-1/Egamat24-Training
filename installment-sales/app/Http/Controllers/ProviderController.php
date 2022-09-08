@@ -50,6 +50,7 @@ class ProviderController extends Controller
     }
     //
     public function showProfile(Provider $provider){
-        dd($provider);
+        $services = $provider->services()->get();
+        return view('provider/profile',['provider'=>$provider,'services'=>$services]);
     }
 }

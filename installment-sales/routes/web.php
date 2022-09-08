@@ -7,7 +7,6 @@ use App\Http\Controllers\PaymentConditionController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Middleware\ProvidersMiddleware;
-use App\Http\Middleware\ClientsMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,7 +54,7 @@ Route::prefix('provider')
             Route::post('/register', 'register')->name('register')->withoutMiddleware(ProvidersMiddleware::class);
 
             Route::get('/logout', 'logout')->name('logout');
-            Route::get('/profile/{provider}', 'showProfile')->name('profile');
+            Route::get('/profile/{provider}', 'showProfile')->name('profile')->withoutMiddleware(ProvidersMiddleware::class);
         });
         Route::controller(ServiceController::class)
             ->name('services.')
