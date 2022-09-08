@@ -54,7 +54,7 @@
                             <div class="d-flex justify-content-between m-1 service">
                                 <div>{{$payment_condition->description}}</div>
                                 <div class="d-flex">
-                                    <div><a href="#" class="btn-sm btn-outline-danger">Delete</a></div>
+                                    <div><a href="{{route('provider.payment-conditions.delete',['paymentCondition'=>$payment_condition->id])}}" class="btn-sm btn-outline-danger">Delete</a></div>
                                     <div><a href="#" class="btn-sm btn-outline-warning">Edit</a></div>
                                 </div>
                             </div>

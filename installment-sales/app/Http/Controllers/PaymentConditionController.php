@@ -25,4 +25,8 @@ class PaymentConditionController extends Controller
         PaymentCondition::create($new_payment_condition);
         return redirect()->back()->with('success','Payment Condition Created Successfully');
     }
+    public function delete(PaymentCondition $paymentCondition){
+        $paymentCondition->delete();
+        return redirect()->back()->with('success','Payment Condition Deleted Successfully');
+    }
 }
