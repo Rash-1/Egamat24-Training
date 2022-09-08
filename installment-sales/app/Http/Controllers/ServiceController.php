@@ -24,7 +24,13 @@ class ServiceController extends Controller
             }
         }
         $new_service = Service::create($new_service_fields);
-        $new_service->paymentConditions()->attach($payment_conditions_identities,['provider_id'=>auth('providers')->user()->id]);
-        return redirect()->back()->with('success','Service/Services Created Successfully');
+        $new_service->paymentConditions()->attach($payment_conditions_identities, ['provider_id' => auth('providers')->user()->id]);
+        return redirect()->back()->with('success', 'Service/Services Created Successfully');
+    }
+
+    public function delete(Service $service)
+    {
+        $service->delete();
+        return redirect()->back()->with('success', 'Service Deleted Successfully');
     }
 }

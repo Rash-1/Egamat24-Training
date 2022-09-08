@@ -1,6 +1,7 @@
 @extends('layouts.providers')
 @section('title','Providers Dashboard')
 @section('contents')
+    @include('massages')
     <div class="row dashboard justify-content-center p-2">
         <div class="col-lg-8 row justify-content-between">
             @if($provided_services->count() > 0)
@@ -32,7 +33,8 @@
                             <div class="d-flex justify-content-between m-1 service">
                                 <div>{{$service->title}}</div>
                                 <div class="d-flex">
-                                    <div><a href="#" class="btn-sm btn-outline-danger">Delete</a></div>
+                                    <div><a href="{{route('provider.services.delete',['service'=>$service->id])}}"
+                                            class="btn-sm btn-outline-danger">Delete</a></div>
                                     <div><a href="#" class="btn-sm btn-outline-warning">Edit</a></div>
                                 </div>
                             </div>
