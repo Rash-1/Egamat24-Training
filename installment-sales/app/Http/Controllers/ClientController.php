@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ClientsRequest;
 use App\Models\client;
+use App\Models\WorkField;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -48,4 +49,5 @@ class ClientController extends Controller
         \request()->session()->regenerateToken();
         return redirect()->route('home-page');
     }
+
 }
