@@ -7,7 +7,7 @@
                 <h3>{{$provider->firstname}} {{$provider->lastname}}</h3>
             </div>
             <div>
-                <h5 class="text-center">Work Field: {{$provider->workField->name}} </h5>
+                <h5 class="text-center me-2">Work Field: {{$provider->workField->name}} </h5>
 
             </div>
             <div>
