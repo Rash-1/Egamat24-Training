@@ -8,7 +8,8 @@
                     <div class="mb-2 col-lg-6">
                         <div class="card p-3">
                             <p class="text-muted">{{$service->provider->workfield->name}}(
-                                <a class="text-decoration-none" href="{{route('provider.profile',['provider'=>$service->provider->id])}}">
+                                <a class="text-decoration-none"
+                                   href="{{route('provider.profile',['provider'=>$service->provider->id])}}">
                                     {{$service->provider->username}}
                                 </a>
                                 )
