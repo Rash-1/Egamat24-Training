@@ -3,11 +3,12 @@
 @section('contents')
     <div class="row dashboard justify-content-center p-2">
         <div class="col-lg-8 row justify-content-between">
-            @if(!empty($provided_services))
+            @if($provided_services->count() > 0)
                 @foreach($provided_services as $provided_service)
                     <div class="mb-2 col-lg-6">
                         <div class="card p-3">
-                            <h2 class="card-title h4 border-bottom border-1 border-secondary">{{$provided_service->service()->title}} ({{$provided_service->paymentCondition()->description}})</h2>
+                            <h2 class="card-title h4 border-bottom border-1 border-secondary">{{$provided_service->service()->title}}
+                                ({{$provided_service->paymentCondition()->description}})</h2>
                             <p class="card-text">
                                 {{$provided_service->service()->description}}
                             </p>
@@ -16,16 +17,17 @@
                     </div>
                 @endforeach
             @else
-                <h1 class="alert alert-danger">
+                <div class="fs-1 alert alert-danger justify-content-center d-flex align-items-center">
                     You have No Provided Services!
-                </h1>
+                </div>
+
             @endif
         </div>
         <div class="col-lg-4">
             <div class="card mb-4">
                 <div class="card-header bg-dark text-white">Services</div>
                 <div class="card-body p-1">
-                    @if(!empty($services))
+                    @if($services->count() > 0)
                         @foreach($services as $service)
                             <div class="d-flex justify-content-between m-1 service">
                                 <div>{{$service->title}}</div>
@@ -45,7 +47,7 @@
             <div class="card mb-4">
                 <div class="card-header bg-dark text-white">Payment Conditions</div>
                 <div class="card-body">
-                    @if(!empty($payment_conditions))
+                    @if($payment_conditions->count() > 0)
                         @foreach($payment_conditions as $payment_condition)
                             <div class="d-flex justify-content-between m-1 service">
                                 <div>{{$payment_condition->description}}</div>

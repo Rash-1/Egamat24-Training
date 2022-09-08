@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title','Home Page')
+@section('title','Work Field Services')
 @section('contents')
     <div class="row">
         <div class="col-lg-9 row justify-content-between">
@@ -18,9 +18,9 @@
                     </div>
                 @endforeach
             @else
-                <div class="fs-1 alert alert-danger justify-content-center d-flex align-items-center">
-                    Oop!There Is No Service Available.
-                </div>
+                <h1 class="alert alert-danger">
+                    Oop!There Is No Service Available For This Service Category.
+                </h1>
             @endif
         </div>
 
@@ -32,14 +32,13 @@
                         @foreach($work_fields as $work_field)
                             <div class="d-flex justify-content-center m-1 service">
                                 <div>
-                                    <a href="{{route('work-field-services',['workField'=>$work_field])}}"
-                                       class="link-info text-decoration-none">{{$work_field->name}}</a>
+                                    <a href="{{route('work-field-services',['workField'=>$work_field])}}" class="link-info text-decoration-none">{{$work_field->name}}</a>
                                 </div>
                             </div>
                         @endforeach
                     @else
                         <div class="d-flex justify-content-center">
-                            Oop!There Is No Service Area Available.
+                            Oop!There Is No Service Category Available.
                         </div>
                     @endif
                 </div>
