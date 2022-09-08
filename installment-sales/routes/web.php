@@ -29,8 +29,8 @@ Route::prefix('client')
     ->controller(ClientController::class)
     ->group(function () {
 
-        Route::view('/login', 'client/login')->name('login-form');
-        Route::view('/register', 'client/register')->name('register-form');
+        Route::view('/login', 'client/authentication/login')->name('login-form');
+        Route::view('/register', 'client/authentication/register')->name('register-form');
 
         Route::post('/login', 'login')->name('login');
         Route::post('/register', 'register')->name('register');
