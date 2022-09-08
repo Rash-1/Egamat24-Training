@@ -6,6 +6,8 @@ use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\PaymentConditionController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Middleware\Provider;
+use App\Http\Middleware\Client;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,38 +36,38 @@ Route::prefix('client')
         Route::post('/register', 'register')->name('register');
 
         Route::get('/logout', 'logout')->name('logout');
+        Route::get('/category-services/{workField}','work_field_services')->name('work-field-services');
     });
 
-Route::prefix('provider')->name('provider.')->group(function () {
+Route::prefix('provider')
+    ->name('provider.')
+    ->middleware(Provider::class)
+    ->group(function () {
+        Route::view('/login', 'provider/authentication/login')->name('login-form')->withoutMiddleware(Provider::class);
+        Route::view('/register', 'provider/authentication/register')->name('register-form')->withoutMiddleware(Provider::class);
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::view('/login', 'provider/authentication/login')->name('login-form');
-    Route::view('/register', 'provider/authentication/register')->name('register-form');
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+        Route::controller(ProviderController::class)->group(function () {
+            Route::post('/login', 'login')->name('login');
+            Route::post('/register', 'register')->name('register');
 
+            Route::get('/logout', 'logout')->name('logout');
+            Route::get('/profile/{provider}', 'showProfile')->name('profile');
+        });
+        Route::controller(ServiceController::class)
+            ->name('services.')
+            ->prefix('services')
+            ->group(function () {
+                Route::view('/define', 'provider/services/define')->name('define-form');
 
-    Route::controller(ProviderController::class)->group(function () {
+                Route::post('/define', 'define')->name('define');
+            });
+        Route::controller(PaymentConditionController::class)
+            ->name('payment-conditions.')
+            ->prefix('payment-conditions')
+            ->group(function () {
+                Route::view('/define', 'provider/payment-conditions/define')->name('define-form');
 
-        Route::post('/login', 'login')->name('login');
-        Route::post('/register', 'register')->name('register');
-
-        Route::get('/logout', 'logout')->name('logout');
-        Route::get('/profile/{provider}', 'showProfile')->name('profile');
+                Route::post('/define', 'define')->name('define');
+            });
     });
-
-    Route::controller(ServiceController::class)
-        ->name('services.')
-        ->prefix('services')
-        ->group(function () {
-            Route::view('/define', 'provider/services/define')->name('define-form');
-
-            Route::post('/define', 'define')->name('define');
-        });
-    Route::controller(PaymentConditionController::class)
-        ->name('payment-conditions.')
-        ->prefix('payment-conditions')
-        ->group(function () {
-            Route::view('/define','provider/payment-conditions/define')->name('define-form');
-
-            Route::post('/define','define')->name('define');
-        });
-});
