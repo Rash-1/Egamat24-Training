@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class Provider
+class ClientsMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,9 @@ class Provider
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth('providers')->check()){
+        if (auth('clients')->check()){
             return $next($request);
         }
-       return redirect()->route('provider.login-form')->with('error','Please Login First');
+        return redirect()->route('client.login-form')->with('error','Please Login First');
     }
 }
