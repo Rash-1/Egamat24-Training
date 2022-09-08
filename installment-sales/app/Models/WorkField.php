@@ -15,4 +15,5 @@ class WorkField extends Authenticatable
     {
         return $this->hasMany(Provider::class);
     }
+
 }

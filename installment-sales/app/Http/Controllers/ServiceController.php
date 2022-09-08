@@ -13,6 +13,7 @@ class ServiceController extends Controller
         $valid_data = $request->validated();
         $new_service_fields = [
             'provider_id' => auth('providers')->user()->id,
+            'work_field_id'=>auth('providers')->user()->work_field_id,
             'title' => $valid_data['title'],
             'description' => $valid_data['description']
         ];
