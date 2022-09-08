@@ -4,6 +4,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\PaymentConditionController;
+use App\Http\Controllers\ProvidedServicesController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Middleware\ProvidersMiddleware;
@@ -69,7 +70,13 @@ Route::prefix('provider')
             ->prefix('payment-conditions')
             ->group(function () {
                 Route::view('/define', 'provider/payment-conditions/define')->name('define-form');
-                Route::get('/delete/{paymentCondition}','delete')->name('delete');
+                Route::get('/delete/{paymentCondition}', 'delete')->name('delete');
                 Route::post('/define', 'define')->name('define');
+            });
+        Route::controller(ProvidedServicesController::class)
+            ->name('provided-services.')
+            ->prefix('provided-services')
+            ->group(function () {
+                Route::get('/delete/{providedService}', 'delete')->name('delete');
             });
     });

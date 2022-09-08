@@ -13,7 +13,7 @@
                             <p class="card-text">
                                 {{$provided_service->service()->description}}
                             </p>
-                            <a class="btn btn-outline-danger" href="#!">Delete</a>
+                            <a class="btn btn-outline-danger" href="{{route('provider.provided-services.delete',['providedService'=>$provided_service->id])}}">Delete</a>
                         </div>
                     </div>
                 @endforeach
