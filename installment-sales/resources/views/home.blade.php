@@ -2,41 +2,45 @@
 @section('title','Home Page')
 @section('contents')
     <div class="row">
-{{--        @dd(\App\Models\Service::all())--}}
-        {{--        @foreach()--}}
-                    <div class="col-lg-9 row justify-content-between">
-                        <div class="mb-2 col-lg-6">
-                            <div class="card p-3">
-                                <div class="small text-muted">January 1, 2022</div>
-                                <h2 class="card-title h4">Post Title</h2>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis
-                                    aliquid atque, nulla.</p>
-                                <a class="btn btn-primary" href="#!">Request Service</a>
-                            </div>
+        <div class="col-lg-9 row justify-content-between">
+            @if(!empty($services))
+                @foreach($services as $service)
+                    <div class="mb-2 col-lg-6">
+                        <div class="card p-3">
+                            <p class="text-muted">{{$service->provider->workfield->name}}({{$service->provider->username}})</p>
+                            <h2 class="card-title h4 border-bottom border-1 border-secondary">{{$service->title}}</h2>
+                            <p class="card-text">
+                                {{$service->description}}
+                            </p>
+                            <a class="btn btn-outline-danger mb-1" href="#!">Payment Conditions</a>
+                            <a class="btn btn-outline-primary" href="#!">Chat With Provider</a>
                         </div>
                     </div>
-        {{--        @endforeach--}}
+                @endforeach
+            @else
+                <h1 class="alert alert-danger">
+                    Oop!There Is No Service Available.
+                </h1>
+            @endif
+        </div>
 
         <div class="col-lg-3">
             <div class="card mb-4">
-                <div class="card-header">Categories</div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">Web Design</a></li>
-                                <li><a href="#!">HTML</a></li>
-                                <li><a href="#!">Freebies</a></li>
-                            </ul>
+                <div class="card-header bg-dark text-white">Services Areas</div>
+                <div class="card-body p-1">
+                    @if(!empty($services_areas))
+                        @foreach($services_areas as $services_area)
+                            <div class="d-flex justify-content-center m-1 service">
+                                <div>
+                                    <a href="#" class="link-info text-decoration-none">{{$services_area->name}}</a>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="d-flex justify-content-center">
+                            Oop!There Is No Service Area Available.
                         </div>
-                        <div class="col-sm-6">
-                            <ul class="list-unstyled mb-0">
-                                <li><a href="#!">JavaScript</a></li>
-                                <li><a href="#!">CSS</a></li>
-                                <li><a href="#!">Tutorials</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>
