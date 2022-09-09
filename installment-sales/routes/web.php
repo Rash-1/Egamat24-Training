@@ -71,8 +71,9 @@ Route::prefix('provider')
             ->prefix('payment-conditions')
             ->group(function () {
                 Route::view('/define', 'provider/payment-conditions/define')->name('define-form');
+                Route::get('/edit/{paymentCondition}','edit')->name('edit-form');
                 Route::get('/delete/{paymentCondition}', 'delete')->name('delete');
-
+                Route::post('/update/{paymentCondition}','update')->name('update');
                 Route::post('/define', 'define')->name('define');
             });
         Route::controller(ProvidedServicesController::class)

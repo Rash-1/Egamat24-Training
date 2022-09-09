@@ -31,4 +31,18 @@ class PaymentConditionController extends Controller
         $paymentCondition->delete();
         return redirect()->back()->with('success', 'Payment Condition Deleted Successfully');
     }
+    public function edit(PaymentCondition $paymentCondition){
+        return view('provider/payment-conditions/edit',['payment_condition'=>$paymentCondition]);
+    }
+    public function update(PaymentCondition $paymentCondition, PaymentConditionRequest $request)
+    {
+        $valid_data = $request->validated();
+        $paymentCondition->update([
+            'description'=>$valid_data['description'],
+            'total_cost'=>$valid_data['total-cost'],
+            'number_of_instalments'=>$valid_data['number-of-instalments'],
+            'each_instalment_amount'=>$valid_data['each-instalment-amount']
+        ]);
+        return redirect()->route('provider.dashboard')->with('success','Payment Condition Edited Successfully');
+    }
 }
