@@ -13,8 +13,8 @@
                     <input class="form-control" id="description" name="description">
                 </div>
                 <div>
-                    <label class="form-label text-white" for="total-cost">Total Cost</label>
-                    <input class="form-control" type="number" id="total-cost" name="total-cost">
+                    <label class="form-label text-white" for="total-increase-in-percentage">Total Increase In Percentage</label>
+                    <input class="form-control" type="number" id="total-increase-in-percentage" name="total-increase-in-percentage">
                 </div>
                 <div>
                     <label class="form-label text-white" for="number-of-instalments">Number Of Instalments</label>
@@ -22,9 +22,9 @@
                            name="number-of-instalments">
                 </div>
                 <div>
-                    <label class="form-label text-white" for="each-instalment-amount">Each Instalment Amount</label>
-                    <input class="form-control" type="number" id="each-instalment-amount"
-                           name="each-instalment-amount">
+                    <label class="form-label text-white" for="duration-of-each-instalment">Duration Of Each Instalment(Day)</label>
+                    <input class="form-control" type="number" id="duration-of-each-instalment"
+                           name="duration-of-each-instalment">
                 </div>
                 <div class="text-center mt-2">
                     <input class="btn col-6 btn-primary" type="submit" value="Create">

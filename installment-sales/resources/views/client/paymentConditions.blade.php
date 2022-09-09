@@ -21,13 +21,13 @@
                             <div class="card p-3">
                                 <h2 class="card-title h4 border-bottom border-1 border-secondary">{{$payment_condition->description}}</h2>
                                 <p class="card-text">
-                                   Total Cost :  {{$payment_condition->total_cost}}
+                                    Total Increase In Percentage :  {{$payment_condition->total_increase_in_percentage}}%
                                 </p>
                                 <p class="card-text">
                                    Number Of Instalment :  {{$payment_condition->number_of_instalments}}
                                 </p>
                                 <p class="card-text">
-                                   Each Instalment Amount :  {{$payment_condition->each_instalment_amount}}
+                                    Duration Of Each Instalment :  {{$payment_condition->duration_of_each_instalment}}
                                 </p>
                                 <a class="btn btn-outline-success mb-1" href="#!">Request</a>
                                 <a class="btn btn-outline-primary" href="#!">Chat With Provider</a>

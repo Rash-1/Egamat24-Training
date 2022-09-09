@@ -12,9 +12,9 @@ class PaymentConditionController extends Controller
         $valid_data = $request->validated();
         $new_payment_condition = [
             'provider_id' => auth('providers')->user()->id,
-            'total_cost' => $valid_data['total-cost'],
-            'number_of_instalments' => $valid_data['number-of-instalments'],
-            'each_instalment_amount' => $valid_data['each-instalment-amount'],
+            'total_increase_in_percentage'=>$valid_data['total-increase-in-percentage'],
+            'number_of_instalments'=>$valid_data['number-of-instalments'],
+            'duration_of_each_instalment'=>$valid_data['duration-of-each-instalment'],
             'description' => $valid_data['description'],
         ];
         foreach (auth('providers')->user()->paymentConditions()->get()->pluck('description') as $description) {
@@ -39,9 +39,9 @@ class PaymentConditionController extends Controller
         $valid_data = $request->validated();
         $paymentCondition->update([
             'description'=>$valid_data['description'],
-            'total_cost'=>$valid_data['total-cost'],
+            'total_increase_in_percentage'=>$valid_data['total-increase-in-percentage'],
             'number_of_instalments'=>$valid_data['number-of-instalments'],
-            'each_instalment_amount'=>$valid_data['each-instalment-amount']
+            'duration_of_each_instalment'=>$valid_data['duration-of-each-instalment']
         ]);
         return redirect()->route('provider.dashboard')->with('success','Payment Condition Edited Successfully');
     }

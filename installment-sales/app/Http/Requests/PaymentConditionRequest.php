@@ -25,9 +25,9 @@ class PaymentConditionRequest extends FormRequest
     {
         return [
             'description' => 'required|min:3|max:25|string',
-            'total-cost' => 'required|integer',
+            'total-increase-in-percentage' => 'required|integer',
             'number-of-instalments' => 'required|integer',
-            'each-instalment-amount' => 'required|integer',
+            'duration-of-each-instalment' => 'required|integer',
         ];
     }
 }

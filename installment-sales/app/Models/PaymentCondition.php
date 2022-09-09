@@ -11,7 +11,7 @@ class PaymentCondition extends Authenticatable
 
     protected $table = 'payment_conditions';
 
-    protected $fillable = ['provider_id','total_cost', 'number_of_instalments', 'each_instalment_amount', 'description'];
+    protected $fillable = ['provider_id','total_increase_in_percentage', 'number_of_instalments', 'duration_of_each_instalment', 'description'];
 
     public function services()
     {

@@ -15,9 +15,11 @@
                            value="{{$payment_condition->description}}">
                 </div>
                 <div>
-                    <label class="form-label text-white" for="total-cost">Total Cost</label>
-                    <input class="form-control" type="number" id="total-cost" name="total-cost"
-                           value="{{$payment_condition->total_cost}}">
+                    <label class="form-label text-white" for="total-increase-in-percentage">Total Increase In
+                        Percentage</label>
+                    <input class="form-control" type="number" id="total-increase-in-percentage"
+                           name="total-increase-in-percentage"
+                           value="{{$payment_condition->total_increase_in_percentage}}">
                 </div>
                 <div>
                     <label class="form-label text-white" for="number-of-instalments">Number Of Instalments</label>
@@ -25,12 +27,14 @@
                            name="number-of-instalments" value="{{$payment_condition->number_of_instalments}}">
                 </div>
                 <div>
-                    <label class="form-label text-white" for="each-instalment-amount">Each Instalment Amount</label>
-                    <input class="form-control" type="number" id="each-instalment-amount"
-                           name="each-instalment-amount" value="{{$payment_condition->each_instalment_amount}}">
+                    <label class="form-label text-white" for="duration-of-each-instalment">Duration Of Each
+                        Instalment(Day) </label>
+                    <input class="form-control" type="number" id="duration-of-each-instalment"
+                           name="duration-of-each-instalment"
+                           value="{{$payment_condition->duration_of_each_instalment}}">
                 </div>
                 <div class="text-center mt-2">
-                    <input class="btn col-6 btn-primary" type="submit" value="Edite">
+                    <input class="btn col-6 btn-primary" type="submit" value="Edit">
                 </div>
             </form>
         </div>

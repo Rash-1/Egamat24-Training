@@ -16,9 +16,9 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('provider_id');
             $table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade');
-            $table->integer('total_cost');
+            $table->integer('total_increase_in_percentage');
             $table->integer('number_of_instalments');
-            $table->integer('each_instalment_amount');
+            $table->integer('duration_of_each_instalment');
             $table->text('description');
             $table->timestamps();
         });
