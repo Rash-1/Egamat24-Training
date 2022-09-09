@@ -16,9 +16,6 @@
                             </div>
                             <div class="d-flex border-bottom border-1 border-secondary align-items-center">
                                 <h2 class="card-title h4 ">{{$service->title}}</h2>
-                                @if(!$service->paymentConditions()->count() > 0)
-                                    (<div class="text-warning fs-6 ">Only Cash</div>)
-                                @endif
                             </div>
 
                             <p class="card-text">

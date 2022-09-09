@@ -22,9 +22,6 @@
                             <div class="card p-3">
                                 <div>
                                     <h2 class="card-title h4 border-bottom border-1 border-secondary">{{$service->title}}</h2>
-                                    @if(!$service->paymentConditions()->count() > 0)
-                                        <p class="badge bg-info">Only Cash</p>
-                                    @endif
                                 </div>
                                 <p class="card-text">
                                     {{$service->description}}
