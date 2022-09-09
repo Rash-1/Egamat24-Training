@@ -17,16 +17,18 @@ class PaymentConditionController extends Controller
             'each_instalment_amount' => $valid_data['each-instalment-amount'],
             'description' => $valid_data['description'],
         ];
-        foreach (auth('providers')->user()->paymentConditions()->get()->pluck('description') as $description){
-            if ($valid_data['description'] === $description){
-                return redirect()->back()->with('error','You Already Have Payment Condition With Same Description');
+        foreach (auth('providers')->user()->paymentConditions()->get()->pluck('description') as $description) {
+            if ($valid_data['description'] === $description) {
+                return redirect()->back()->with('error', 'You Already Have Payment Condition With Same Description');
             }
         }
         PaymentCondition::create($new_payment_condition);
-        return redirect()->back()->with('success','Payment Condition Created Successfully');
+        return redirect()->back()->with('success', 'Payment Condition Created Successfully');
     }
-    public function delete(PaymentCondition $paymentCondition){
+
+    public function delete(PaymentCondition $paymentCondition)
+    {
         $paymentCondition->delete();
-        return redirect()->back()->with('success','Payment Condition Deleted Successfully');
+        return redirect()->back()->with('success', 'Payment Condition Deleted Successfully');
     }
 }
