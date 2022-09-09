@@ -21,13 +21,13 @@
                             <div class="card p-3">
                                 <h2 class="card-title h4 border-bottom border-1 border-secondary">{{$provided_service->paymentCondition()->description}}</h2>
                                 <p class="card-text">
-                                    Total Cost :  {{$provided_service->paymentCondition()->total_cost}}
+                                    Total Increase In Percentage :  {{$provided_service->paymentCondition()->total_increase_in_percentage}}
                                 </p>
                                 <p class="card-text">
                                     Number Of Instalment :  {{$provided_service->paymentCondition()->number_of_instalments}}
                                 </p>
                                 <p class="card-text">
-                                    Each Instalment Amount :  {{$provided_service->paymentCondition()->each_instalment_amount}}
+                                    Duration Of Each Instalment(Day) :  {{$provided_service->paymentCondition()->duration_of_each_instalment}}
                                 </p>
                                 <a class="btn btn-outline-danger" href="{{route('provider.provided-services.delete',['providedService'=>$provided_service])}}">Delete Provided Service</a>
                             </div>
