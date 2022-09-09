@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::controller(HomePageController::class)->group(function (){
     Route::get('/','index')->name('home-page');
     Route::get('/category-services/{workField}','work_field_services')->name('work-field-services');
+    Route::get('/show-service-payment-conditions/{service}','show_service_payment_conditions')->name('show_service_payment_conditions');
 });
 
 
@@ -71,6 +72,7 @@ Route::prefix('provider')
             ->group(function () {
                 Route::view('/define', 'provider/payment-conditions/define')->name('define-form');
                 Route::get('/delete/{paymentCondition}', 'delete')->name('delete');
+
                 Route::post('/define', 'define')->name('define');
             });
         Route::controller(ProvidedServicesController::class)
@@ -78,5 +80,6 @@ Route::prefix('provider')
             ->prefix('provided-services')
             ->group(function () {
                 Route::get('/delete/{providedService}', 'delete')->name('delete');
+                Route::get('/show/{service}','show')->name('show');
             });
     });
