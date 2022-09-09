@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->integer('total_increase_in_percentage');
             $table->integer('number_of_instalments');
             $table->integer('duration_of_each_instalment');
+            $table->boolean('default')->default(false);
             $table->text('description');
             $table->timestamps();
         });

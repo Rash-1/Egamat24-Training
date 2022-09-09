@@ -28,11 +28,17 @@ class PaymentConditionController extends Controller
 
     public function delete(PaymentCondition $paymentCondition)
     {
-        $paymentCondition->delete();
-        return redirect()->back()->with('success', 'Payment Condition Deleted Successfully');
+        if (!$paymentCondition->default){
+            $paymentCondition->delete();
+            return redirect()->back()->with('success', 'Payment Condition Deleted Successfully');
+        }
+        return redirect()->back()->with('error', 'This Is A Default Payment Condition,You Can Not Delete It');
     }
     public function edit(PaymentCondition $paymentCondition){
-        return view('provider/payment-conditions/edit',['payment_condition'=>$paymentCondition]);
+        if (!$paymentCondition->default){
+            return view('provider/payment-conditions/edit',['payment_condition'=>$paymentCondition]);
+        }
+        return redirect()->back()->with('error', 'This Is A Default Payment Condition,You Can Not Edit It');
     }
     public function update(PaymentCondition $paymentCondition, PaymentConditionRequest $request)
     {

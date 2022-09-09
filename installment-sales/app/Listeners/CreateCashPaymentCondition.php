@@ -33,6 +33,7 @@ class CreateCashPaymentCondition
             'number_of_instalments'=>0,
             'duration_of_each_instalment'=>0,
             'description' => 'Cash',
+            'default'=>true,
         ];
         PaymentCondition::create($cash_payment_condition);
     }
