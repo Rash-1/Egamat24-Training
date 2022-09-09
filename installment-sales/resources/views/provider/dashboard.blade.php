@@ -26,7 +26,7 @@
                                     Conditions</a>
                             @endif
                             <a class="btn btn-outline-danger mb-1" href="{{route('provider.services.delete',['service'=>$service->id])}}">Delete</a>
-                            <a class="btn btn-outline-warning mb-1" href="#">Edit</a>
+                            <a class="btn btn-outline-warning mb-1" href="{{route('provider.services.edit',['service'=>$service->id])}}">Edit</a>
                         </div>
                     </div>
                 @endforeach
