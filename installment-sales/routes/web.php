@@ -8,6 +8,7 @@ use App\Http\Controllers\ProvidedServicesController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Middleware\ProvidersMiddleware;
+use App\Http\Middleware\ClientsMiddleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,14 +34,19 @@ Route::prefix('client')
     ->name('client.')
     ->controller(ClientController::class)
     ->group(function () {
-
         Route::view('/login', 'client/authentication/login')->name('login-form');
         Route::view('/register', 'client/authentication/register')->name('register-form');
-
         Route::post('/login', 'login')->name('login');
         Route::post('/register', 'register')->name('register');
-
         Route::get('/logout', 'logout')->name('logout');
+        Route::middleware(ClientsMiddleware::class)
+            ->name('requested-services.')
+            ->prefix('requested-services')
+            ->group(function (){
+                Route::get('/request-service/{service_id}/{payment_condition_id}','request_service')->name('request-service');
+                Route::get('/show','show_requested_services')->name('show-requests');
+            });
+
     });
 
 Route::prefix('provider')

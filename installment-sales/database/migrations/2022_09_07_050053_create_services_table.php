@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('provider_id');
             $table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade');
-            $table->unsignedBigInteger('work_field_id');
+            $table->foreignId('work_field_id');
             $table->string('title');
             $table->text('description');
             $table->string('cash_price');

@@ -34,4 +34,7 @@ class Provider extends Authenticatable
     {
         return $this->hasMany(ProvidedService::class);
     }
+    public function requestedServices(){
+        return $this->hasMany(RequestedService::class);
+    }
 }

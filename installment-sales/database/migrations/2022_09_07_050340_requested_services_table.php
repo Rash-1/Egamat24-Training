@@ -14,9 +14,9 @@ return new class extends Migration {
     {
         Schema::create('requested_services', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('client_id');
-            $table->unsignedBigInteger('provided_service_id');
-            $table->unsignedBigInteger('provider_id');
+            $table->foreignId('client_id');
+            $table->foreignId('provided_service_id');
+            $table->foreignId('provider_id');
             $table->enum('status',['accepted','rejected','not-answered'])->default('not-answered');
             $table->timestamps();
         });

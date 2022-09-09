@@ -9,8 +9,13 @@
                 <li class="nav-item"><a class="nav-link" href="{{route('home-page')}}">Home</a></li>
                 @if(auth('clients')->check())
                     <li class="nav-item">
-                        <a class="nav-link"
-                           href="{{route('client.logout')}}">{{auth('clients')->user()->username}}-Log Out
+                        <a class="nav-link" href="{{route('client.requested-services.show-requests')}}">
+                            Requested Services
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('client.logout')}}">
+                            {{auth('clients')->user()->username}}-Log Out
                         </a>
                     </li>
                 @else

@@ -15,7 +15,9 @@ class Client extends Authenticatable
 
     public function providedServices()
     {
-        return $this->belongsToMany(ProvidedService::class);
-
+        return $this->belongsToMany(ProvidedService::class, 'requested_services')
+            ->withPivot(['provider_id', 'status'])
+            ->using(RequestedService::class);
     }
+
 }

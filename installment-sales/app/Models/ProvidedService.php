@@ -16,7 +16,9 @@ class ProvidedService extends pivot
 
     public function clients()
     {
-        return $this->belongsToMany(Client::class);
+        return $this->belongsToMany(Client::class, 'requested_service')
+            ->using(RequestedService::class)
+            ->withPivot(['provider_id', 'status']);
     }
 
     public function provider()

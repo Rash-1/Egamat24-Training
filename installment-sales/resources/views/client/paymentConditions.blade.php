@@ -2,6 +2,7 @@
 @section('title','Service Payment Conditions')
 @section('contents')
     <div class="d-flex flex-column">
+        @include('massages')
         <div class="description border-1 border-secondary bg-dark text-white p-2 rounded-3">
             <div>
                 <h3>{{$service->title}}</h3>
@@ -29,7 +30,7 @@
                                 <p class="card-text">
                                     Duration Of Each Instalment :  {{$payment_condition->duration_of_each_instalment}}
                                 </p>
-                                <a class="btn btn-outline-success mb-1" href="#!">Request</a>
+                                <a class="btn btn-outline-success mb-1" href="{{route('client.requested-services.request-service',['service_id'=>$service->id,'payment_condition_id'=>$payment_condition->id])}}">Request</a>
                                 <a class="btn btn-outline-primary" href="#!">Chat With Provider</a>
                             </div>
                         </div>
