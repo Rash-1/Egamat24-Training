@@ -18,8 +18,12 @@
                         <textarea class="form-control" rows="5" id="description" name="description"></textarea>
                     </div>
                     <div>
+                        <label class="form-label text-white" for="cash-price">Cash Price</label>
+                        <input class="form-control" type="number" id="cash-price" name="cash_price">
+                    </div>
+                    <div>
                         <label class="form-label text-white" for="payment-conditions">Payment Conditions</label>
-                        <select size="2" class="form-select p-1" multiple name="payment-conditions[]"
+                        <select size="2" class="form-select p-1" multiple name="payment_conditions[]"
                                 id="payment-conditions">
                             @foreach(auth('providers')->user()->paymentConditions()->get()->all() as $payment_condition)
                                 <option class="mb-1 border-1 text-primary rounded-2 p-1"

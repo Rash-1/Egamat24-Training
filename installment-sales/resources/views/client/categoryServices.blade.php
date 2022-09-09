@@ -17,7 +17,10 @@
                             <p class="card-text">
                                 {{$service->description}}
                             </p>
-                            <a class="btn btn-outline-danger mb-1" href="#!">Payment Conditions</a>
+                            <p class="card-text">
+                                Cash Price : {{$service->cash_price}}
+                            </p>
+                            <a class="btn btn-outline-danger mb-1" href="{{route('show_service_payment_conditions',['service'=>$service->id])}}">Payment Conditions</a>
                             <a class="btn btn-outline-primary" href="#!">Chat With Provider</a>
                         </div>
                     </div>

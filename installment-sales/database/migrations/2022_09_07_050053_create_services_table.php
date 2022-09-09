@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('work_field_id');
             $table->string('title');
             $table->text('description');
+            $table->string('cash_price');
             $table->timestamps();
         });
     }

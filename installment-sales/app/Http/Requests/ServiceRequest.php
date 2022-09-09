@@ -26,7 +26,7 @@ class ServiceRequest extends FormRequest
         return [
             'title'=>'required|min:5|max:25',
             'description'=>'required|min:5|max:100',
-            'payment-conditions'=>'required',
+            'cash_price'=>'required',
         ];
     }
 }

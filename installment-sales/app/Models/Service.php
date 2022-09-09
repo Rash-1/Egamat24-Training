@@ -9,7 +9,7 @@ class Service extends Authenticatable
 {
     use HasFactory;
 
-    protected $fillable = ['provider_id','work_field_id','title','description'];
+    protected $fillable = ['provider_id','work_field_id','title','description','cash_price'];
 
     public function provider()
     {

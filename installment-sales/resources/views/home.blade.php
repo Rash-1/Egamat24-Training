@@ -7,25 +7,41 @@
                 @foreach($services as $service)
                     <div class="mb-2 col-lg-6">
                         <div class="card p-3">
-                            <p class="text-muted">{{$service->provider->workfield->name}}(
-                                <a class="text-decoration-none"
-                                   href="{{route('provider.profile',['provider'=>$service->provider->id])}}">
+                            <div class="d-flex">
+                                <p class="text-muted">{{$service->provider->workfield->name}}</p>
+                                (<a class="text-decoration-none"
+                                    href="{{route('provider.profile',['provider'=>$service->provider->id])}}">
                                     {{$service->provider->username}}
-                                </a>
-                                )
-                            </p>
-                            <h2 class="card-title h4 border-bottom border-1 border-secondary">{{$service->title}}</h2>
+                                </a>)
+                            </div>
+                            <div class="d-flex border-bottom border-1 border-secondary align-items-center">
+                                <h2 class="card-title h4 ">{{$service->title}}</h2>
+                                @if(!$service->paymentConditions()->count() > 0)
+                                    (<div class="text-warning fs-6 ">Only Cash</div>)
+                                @endif
+                            </div>
+
                             <p class="card-text">
                                 {{$service->description}}
                             </p>
-                            <a class="btn btn-outline-danger mb-1" href="#!">Payment Conditions</a>
+                            <p class="card-text">
+                                Cash Price : {{$service->cash_price}}
+                            </p>
+                            @if($service->paymentConditions()->count() > 0)
+                                <a class="btn btn-outline-danger mb-1"
+                                   href="{{route('show_service_payment_conditions',['service'=>$service->id])}}">Payment
+                                    Conditions</a>
+                            @else
+                                <a class="btn btn-outline-success mb-1"
+                                   href="#">Request Service</a>
+                            @endif
                             <a class="btn btn-outline-primary" href="#!">Chat With Provider</a>
                         </div>
                     </div>
                 @endforeach
             @else
                 <div class="fs-1 alert alert-danger justify-content-center d-flex align-items-center">
-                    Oop!There Is No Service Available.
+                    Oops!There Is No Service Available.
                 </div>
             @endif
         </div>
@@ -45,7 +61,7 @@
                         @endforeach
                     @else
                         <div class="d-flex justify-content-center">
-                            Oop!There Is No Service Area Available.
+                            Oops!There Is No Service Category Available.
                         </div>
                     @endif
                 </div>
