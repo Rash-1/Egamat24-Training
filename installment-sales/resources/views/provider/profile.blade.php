@@ -20,11 +20,23 @@
                     @foreach($services as $service)
                         <div class="mb-2 col-lg-6">
                             <div class="card p-3">
-                                <h2 class="card-title h4 border-bottom border-1 border-secondary">{{$service->title}}</h2>
+                                <div>
+                                    <h2 class="card-title h4 border-bottom border-1 border-secondary">{{$service->title}}</h2>
+                                    @if(!$service->paymentConditions()->count() > 0)
+                                        <p class="badge bg-info">Only Cash</p>
+                                    @endif
+                                </div>
                                 <p class="card-text">
                                     {{$service->description}}
                                 </p>
-                                <a class="btn btn-outline-danger mb-1" href="#!">Payment Conditions</a>
+                                @if($service->paymentConditions()->count() > 0)
+                                    <a class="btn btn-outline-danger mb-1"
+                                       href="{{route('show_service_payment_conditions',['service'=>$service->id])}}">Payment
+                                        Conditions</a>
+                                @else
+                                    <a class="btn btn-outline-success mb-1"
+                                       href="#">Request Service</a>
+                                @endif
                                 <a class="btn btn-outline-primary" href="#!">Chat With Provider</a>
                             </div>
                         </div>
