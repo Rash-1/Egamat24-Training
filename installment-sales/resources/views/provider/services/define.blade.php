@@ -3,7 +3,6 @@
 
 @section('contents')
     <div class="client-login-form row justify-content-center">
-        @if(auth('providers')->user()->paymentConditions()->get()->count() > 0)
             <div class="form-header text-dark text-center fs-1">Define New Service</div>
             <div class="col-lg-4 col-sm-7 border-1 border-dark rounded-1 p-3 bg-secondary">
                 @include('massages')
@@ -36,10 +35,5 @@
                     </div>
                 </form>
             </div>
-        @else
-            <h1 class="text-center alert alert-danger">
-                You Don't Have Any Payment Condition, Please Define At Least One.
-            </h1>
-        @endif
     </div>
 @endsection
