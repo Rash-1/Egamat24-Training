@@ -56,13 +56,21 @@ Route::prefix('provider')
         Route::view('/login', 'provider/authentication/login')->name('login-form')->withoutMiddleware(ProvidersMiddleware::class);
         Route::view('/register', 'provider/authentication/register')->name('register-form')->withoutMiddleware(ProvidersMiddleware::class);
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-        Route::controller(ProviderController::class)->group(function () {
-            Route::post('/login', 'login')->name('login')->withoutMiddleware(ProvidersMiddleware::class);
-            Route::post('/register', 'register')->name('register')->withoutMiddleware(ProvidersMiddleware::class);
-
+        Route::controller(ProviderController::class)
+            ->name('requested-services.')
+            ->prefix('requested-services')
+            ->group(function (){
+                Route::get('/show','show_requests')->name('show');
+                Route::get('/accept/{requestedService}','accept_request')->name('accept');
+                Route::get('/reject/{requestedService}','reject_request')->name('reject');
+            });
+        Route::controller(ProviderController::class)
+            ->withoutMiddleware(ProvidersMiddleware::class)
+            ->group(function () {
+            Route::post('/login', 'login')->name('login');
+            Route::post('/register', 'register')->name('register');
             Route::get('/logout', 'logout')->name('logout');
-            Route::get('/profile/{provider}', 'showProfile')->name('profile')->withoutMiddleware(ProvidersMiddleware::class);
+            Route::get('/profile/{provider}', 'showProfile')->name('profile');
         });
         Route::controller(ServiceController::class)
             ->name('services.')

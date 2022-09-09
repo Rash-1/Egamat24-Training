@@ -10,6 +10,7 @@
                 <li class="nav-item"><a class="nav-link" href="{{route('provider.dashboard')}}">Dashboard</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{route('provider.services.define-form')}}">Define New Service</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{route('provider.payment-conditions.define-form')}}">Define New Payment Condition</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('provider.requested-services.show')}}">Requested Services</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{route('provider.logout')}}">{{auth('providers')->user()->username}} - Logout</a></li>
             </ul>
         </div>

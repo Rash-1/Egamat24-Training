@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProviderRequest;
 use App\Models\Provider;
+use App\Models\RequestedService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -44,13 +45,40 @@ class ProviderController extends Controller
         ]);
         return redirect()->route('provider.login')->with('success', 'welcome ' . $firstname . ' ' . $lastname . ' you are registered successfully');
     }
-    public function logout(){
+
+    public function logout()
+    {
         auth('providers')->logout();
         return redirect()->route('home-page');
     }
-    //
-    public function showProfile(Provider $provider){
+
+    //profile
+    public function showProfile(Provider $provider)
+    {
         $services = $provider->services()->get();
-        return view('provider/profile',['provider'=>$provider,'services'=>$services]);
+        return view('provider/profile', ['provider' => $provider, 'services' => $services]);
+    }
+
+    //Requested Services
+    public function show_requests()
+    {
+        $requested_services = auth('providers')->user()->requestedServices;
+        return view('provider/requestedServices', ['requested_services' => $requested_services]);
+    }
+
+    public function accept_request(RequestedService $requestedService)
+    {
+        $requestedService->update([
+            'status' => 'accepted'
+        ]);
+        return redirect()->back()->with('success','Request Successfully Accepted');
+    }
+
+    public function reject_request(RequestedService $requestedService)
+    {
+        $requestedService->update([
+            'status' => 'rejected'
+        ]);
+        return redirect()->back()->with('success','Request Successfully Rejected');
     }
 }
