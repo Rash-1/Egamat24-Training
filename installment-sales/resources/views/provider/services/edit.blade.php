@@ -25,11 +25,11 @@
                 @if($service->paymentConditions()->count() > 0)
                 <div>
                     <label class="form-label text-white" for="payment-conditions">Current Payment Conditions</label>
-                    <ol size="2" class="form-select p-1" id="payment-conditions">
+                    <ul size="2" class="list-group p-1" id="payment-conditions">
                         @foreach($service->paymentConditions as $payment_condition)
-                            <li class="mb-1 border-1 text-primary rounded-2 p-1">{{$payment_condition->description}}</li>
+                            <li class=" list-group-item mb-1 border-1 text-primary rounded-2 p-1">{{$payment_condition->description}}</li>
                         @endforeach
-                    </ol>
+                    </ul>
                 </div>
                 @endif
                 <div>
