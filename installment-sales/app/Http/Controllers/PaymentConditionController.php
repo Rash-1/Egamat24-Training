@@ -26,29 +26,29 @@ class PaymentConditionController extends Controller
         return redirect()->back()->with('success', 'Payment Condition Created Successfully');
     }
 
-    public function delete(PaymentCondition $paymentCondition)
-    {
-        if (!$paymentCondition->is_default){
-            $paymentCondition->delete();
-            return redirect()->back()->with('success', 'Payment Condition Deleted Successfully');
-        }
-        return redirect()->back()->with('error', 'This Is A Default Payment Condition,You Can Not Delete It');
-    }
-    public function edit(PaymentCondition $paymentCondition){
-        if (!$paymentCondition->is_default){
-            return view('provider/payment-conditions/edit',['payment_condition'=>$paymentCondition]);
-        }
-        return redirect()->back()->with('error', 'This Is A Default Payment Condition,You Can Not Edit It');
-    }
-    public function update(PaymentCondition $paymentCondition, PaymentConditionRequest $request)
-    {
-        $valid_data = $request->validated();
-        $paymentCondition->update([
-            'description'=>$valid_data['description'],
-            'total_increase_in_percentage'=>$valid_data['total-increase-in-percentage'],
-            'number_of_instalments'=>$valid_data['number-of-instalments'],
-            'duration_of_each_instalment'=>$valid_data['duration-of-each-instalment']
-        ]);
-        return redirect()->route('provider.dashboard')->with('success','Payment Condition Edited Successfully');
-    }
+//    public function delete(PaymentCondition $paymentCondition)
+//    {
+//        if (!$paymentCondition->is_default){
+//            $paymentCondition->delete();
+//            return redirect()->back()->with('success', 'Payment Condition Deleted Successfully');
+//        }
+//        return redirect()->back()->with('error', 'This Is A Default Payment Condition,You Can Not Delete It');
+//    }
+//    public function edit(PaymentCondition $paymentCondition){
+//        if (!$paymentCondition->is_default){
+//            return view('provider/payment-conditions/edit',['payment_condition'=>$paymentCondition]);
+//        }
+//        return redirect()->back()->with('error', 'This Is A Default Payment Condition,You Can Not Edit It');
+//    }
+//    public function update(PaymentCondition $paymentCondition, PaymentConditionRequest $request)
+//    {
+//        $valid_data = $request->validated();
+//        $paymentCondition->update([
+//            'description'=>$valid_data['description'],
+//            'total_increase_in_percentage'=>$valid_data['total-increase-in-percentage'],
+//            'number_of_instalments'=>$valid_data['number-of-instalments'],
+//            'duration_of_each_instalment'=>$valid_data['duration-of-each-instalment']
+//        ]);
+//        return redirect()->route('provider.dashboard')->with('success','Payment Condition Edited Successfully');
+//    }
 }

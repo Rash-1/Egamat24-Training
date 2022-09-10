@@ -29,7 +29,7 @@
                                 <p class="card-text">
                                     Duration Of Each Instalment(Day) :  {{$provided_service->paymentCondition()->duration_of_each_instalment}}
                                 </p>
-                                <a class="btn btn-outline-danger" href="{{route('provider.provided-services.delete',['providedService'=>$provided_service])}}">Delete Provided Service</a>
+{{--                                <a class="btn btn-outline-danger" href="{{route('provider.provided-services.delete',['providedService'=>$provided_service])}}">Delete Provided Service</a>--}}
                             </div>
                         </div>
                     @endforeach

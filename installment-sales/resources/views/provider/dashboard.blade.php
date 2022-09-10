@@ -22,8 +22,8 @@
                                    href="{{route('provider.provided-services.show',['service'=>$service->id])}}">Payment
                                     Conditions</a>
                             @endif
-                            <a class="btn btn-outline-danger mb-1" href="{{route('provider.services.delete',['service'=>$service->id])}}">Delete</a>
-                            <a class="btn btn-outline-warning mb-1" href="{{route('provider.services.edit',['service'=>$service->id])}}">Edit</a>
+{{--                            <a class="btn btn-outline-danger mb-1" href="{{route('provider.services.delete',['service'=>$service->id])}}">Delete</a>--}}
+{{--                            <a class="btn btn-outline-warning mb-1" href="{{route('provider.services.edit',['service'=>$service->id])}}">Edit</a>--}}
                         </div>
                     </div>
                 @endforeach
@@ -41,10 +41,10 @@
                         @foreach($payment_conditions as $payment_condition)
                             <div class="d-flex justify-content-between m-1 service">
                                 <div>{{$payment_condition->description}}</div>
-                                <div class="d-flex">
-                                    <div><a href="{{route('provider.payment-conditions.delete',['paymentCondition'=>$payment_condition->id])}}" class="btn-sm btn-outline-danger">Delete</a></div>
-                                    <div><a href="{{route('provider.payment-conditions.edit-form',['paymentCondition'=>$payment_condition->id])}}" class="btn-sm btn-outline-warning">Edit</a></div>
-                                </div>
+{{--                                <div class="d-flex">--}}
+{{--                                    <div><a href="{{route('provider.payment-conditions.delete',['paymentCondition'=>$payment_condition->id])}}" class="btn-sm btn-outline-danger">Delete</a></div>--}}
+{{--                                    <div><a href="{{route('provider.payment-conditions.edit-form',['paymentCondition'=>$payment_condition->id])}}" class="btn-sm btn-outline-warning">Edit</a></div>--}}
+{{--                                </div>--}}
                             </div>
                         @endforeach
                     @else
