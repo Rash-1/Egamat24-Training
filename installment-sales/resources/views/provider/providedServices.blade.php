@@ -7,7 +7,7 @@
                 <h3>{{$service->title}}</h3>
             </div>
             <div>
-                <h5 class="text-center me-2">Work Field: {{$service->provider->workField->name}} </h5>
+                <h5 class="text-center me-2">Service Category: {{$service->provider->workField->name}} </h5>
             </div>
             <div>
                 <h5 class="text-end me-2">number Of Payment Conditions: {{$service->paymentConditions()->count()}}</h5>
