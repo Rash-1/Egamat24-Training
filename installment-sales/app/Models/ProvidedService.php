@@ -28,10 +28,10 @@ class ProvidedService extends pivot
 
     public function service()
     {
-        return Service::all()->find($this->service_id);
+        return Service::where('id',$this->service_id)->get()->first();
     }
     public function paymentCondition()
     {
-        return PaymentCondition::all()->find($this->payment_condition_id);
+        return PaymentCondition::where('id',$this->payment_condition_id)->get()->first();
     }
 }

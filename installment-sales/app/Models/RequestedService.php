@@ -18,10 +18,10 @@ class RequestedService extends Pivot
         return $this->belongsTo(Provider::class);
     }
     public function client(){
-        return Client::all()->find($this->client_id);
+        return Client::where('id',$this->client_id)->get()->first();
     }
     public function provided_service(){
-        return ProvidedService::all()->find($this->provided_service_id);
+        return ProvidedService::where('id',$this->provided_service_id)->get()->first();
     }
 
 }
